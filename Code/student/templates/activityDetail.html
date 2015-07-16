@@ -1,0 +1,433 @@
+{% extends "base.html" %}
+{% block titlebar %}活动详情{% endblock %}
+{% block import %}
+<link rel="stylesheet" type="text/css" href="/static/css/activityDetail.css">
+<link rel="stylesheet" type="text/css" href="/static/css/studentTopBar.css">
+<link rel="stylesheet" type="text/css" href="/static/css/applyActivity.css">
+{% endblock %}
+{% block content %}
+{% include "studentPageTop.html" %}
+<div class="middlePart">
+    <div class="titleItem"><h1>活动详情</h1></div>
+
+    <dl class="activityItem">
+    	<dt>
+            <span class="{{title}}">{{activity.title}}
+                <span class="smallFont"> 
+                {% ifequal activity.type 'publicWelfare'%}
+                    公益活动
+                {% endifequal %}
+                {% ifequal activity.type 'nonPublicWelfare'%}
+                    非公益活动
+                {% endifequal %}
+                {% ifequal activity.type 'academic' %}
+                    学术活动
+                {% endifequal %}
+                {% ifequal activity.type 'unWelfareSport' %}
+                    体育活动
+                {% endifequal %}
+                {% ifequal activity.type 'welfareSport' %}
+                    公益体育活动
+                {% endifequal %}
+                {% ifequal activity.type 'other' %}
+                    其他活动
+                {% endifequal %}
+                </span> 
+            </span>
+            {% ifequal activity.status "faild" %}
+                <button title="modify" class="btn btn-warning">修改</button></dt>
+            {% endifequal %}
+        <hr class="divider">
+        <dd>
+            <span class="blank">
+                负责人 : 
+                <span class="smallFont sponsor {{sponsor}}">{{activity.sponsor}}</span>
+            </span>
+            <span class="blank">
+                校区 : 
+                <span class="smallFont campus {{campus}}">{{activity.get_campus_display}}</span>
+            </span>
+            <span class="blank">
+                时间 : 
+                <span class="smallFont startDateTime {{startDateTime}}">{{activity.startDateTime|date:"Y-m-d"}} {{activity.startDateTime|time:"H:i"}} 
+                </span> -- 
+                <span class="smallFont endDateTime {{endDateTime}}">{{activity.endDateTime|date:"Y-m-d"}} {{activity.endDateTime|time:"H:i"}}</span>
+            </span>
+            <span class="blank">
+                联系方式 : 
+                <span class="smallFont">{{activity.student.phone}}</span>
+            </span>
+            <hr class="divider">
+            <p class="content smallFont {{content}}">{{activity.content | safe}}</p>
+            {% ifequal activity.type "publicWelfare" %}
+                <span class="blank">
+                    公益时长 : 
+                    <span class="smallFont {{maxTime}}" data-flag="true" data-class="maxTime">{{activity.maxTime|floatformat:"2"}}h</span>
+                </span>
+            {% endifequal %}
+            {% ifequal activity.type "welfareSport" %}
+                <span class="blank">
+                    公益时长 : 
+                    <span class="smallFont {{maxTime}}" data-flag="true" data-class="maxTime">{{activity.maxTime|floatformat:"2"}}h</span>
+                </span>
+            {% endifequal %}
+            {% ifequal activity.type "unWelfareSport" %}
+                <span class="blank">
+                    盖章个数 : 
+                    <span class="smallFont {{maxTime}}" data-flag="true" data-class="maxTime">{{activity.maxTime|floatformat:"0"}}</span>
+                </span>
+            {% endifequal %}
+            <span class="blank">
+                地点 : 
+                <span class="smallFont location {{location}}">{{activity.location}}</span>
+            </span>
+            <span class="blank">
+                总人数 : 
+                <span class="smallFont totalNumber {{totalNumber}}">{{activity.totalNumber}}</span>
+            </span>
+            {% if activity.deadline%}
+            <span class="blank">
+                报名截止时间 : 
+                <span class="smallFont endTime {{deadline}}">{{activity.deadline|date:"Y-m-d"}} {{activity.deadline|time:"H:i"}}</span>
+            </span>
+            {% endif %}
+            {% if isApplier %}
+            {% if submission%}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>申请类型</th>
+                        <th>开始时间</th>
+                        <th>结束时间</th>
+                        <th>课室 / 地点</th>
+                        <th>桌子数量</th>
+                        <th>沙滩椅数量</th>
+                        <th>帐篷数量</th>
+                        <th>其他物资</th>
+                        <th>附件</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for item in submission %}
+                <tr>
+                    <td>{{item.get_type_display}}</td>
+                    <td {% if not item.startTimeMark %} class="tag" {% endif %}>{{item.startTime|date:"Y-m-d"}} {{item.startTime|time:"H:i"}}</td>
+                    <td {% if not item.endTimeMark %} class="tag" {% endif %}>{{item.endTime|date:"Y-m-d"}} {{item.endTime|time:"H:i"}}</td>
+                    <td {% if not item.locationMark %} class="tag" {% endif %}>
+                        {% ifnotequal item.location "[]" %}
+                            {{item.location}}
+                        {% endifnotequal %}
+                        {% ifequal item.location "[]" %}
+                            {% for location in item.locations.all %}
+                                {{location.name}}{{location.locationid}}、
+                            {% endfor %}
+                        {% endifequal %}
+                    </td>
+                    <td {% if not item.numberMark %} class="tag" {% endif %}>{% if item.number %}{{item.number}}{% endif %}</td>
+                    <td {% if not item.chairNumberMark %} class="tag" {% endif %}>{% if item.chairNumber %}{{item.chairNumber}}{% endif %}</td>
+                    <td {% if not item.tentNumberMark %} class="tag" {% endif %}>{{item.tentNumber}}</td>
+                    <td {% if not item.otherNumberMark %} class="tag" {% endif %}>{{item.otherNumber}}</td>
+                    <td>
+                        {% if item.file %}
+                        <a class="btn btn-success" href="{{item.file.url}}">下载</a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+            {% if  attachment%}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>资料描述</th>
+                        <th>资料下载</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for item in attachment %}
+                <tr>
+                    <td {% if not item.attachmentMark %} class="tag" {% endif %}>{{item.description}}</td>
+                    <td><a class="btn btn-success" href="{{item.file.url}}">下载</a></td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td>无</td>
+                    <td><a class="btn btn-success disabled" href="#">无</a></td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+            {% endif %}
+            <hr class="divider">
+            {% if  activity.firstRemark%}
+            <span class="blank">
+                <p>指导老师 <strong>{{activity.teacher.name}}</strong> 意见: {{activity.firstRemark}}</p>
+            </span>
+            {% endif %}
+            {% if  activity.secondRemark%}
+            <span class="blank">
+                <p>团委 <strong>{{activity.get_campus_display}}</strong> 意见: {{activity.secondRemark}}</p>
+            </span>
+            {% endif %}
+        </dd>
+        {% if isCompleted %}
+        {% else %}
+        {% ifnotequal activity.status "success" %}
+        {% else %}
+        {% ifequal activity.type "publicWelfare" %}
+        <button id="cancelSigning" data-id="{{activity.id}}" class="signOut" name="signOut" {% if isSign %}{% else %}style="display:none;"{% endif %}>取消报名</button>
+        <button id="signUp" data-id="{{activity.id}}" class="signIn" name="signIn" {% if isSign %}style="display:none;"{% endif %}>报名</button>
+        {% endifequal %}
+        {% endifnotequal %}
+        {% endif %}
+        <div class="clear">
+        </div>
+
+    </dl>
+    <div class="modifyActivity">
+        <div class="shangChuan">
+            <iframe name="uploadFrame" id="uploadFrame"></iframe>
+            <form action="/student/upload/" method="post" target="uploadFrame" enctype="multipart/form-data" id="uploadPictures" class="upload">
+            {% csrf_token %}
+                <input type="file" name="pictures" multiple="multiple" class="originalUpload" style="display:none"/>
+                <button type="button" class="btn btn-default newUploadBtn">宣传品电子版上传</button>
+                <input type="text" class="form-control newUploadInput" disabled>
+                <button type="submit"><img src="/static/images/upload.png"></button>
+            </form>
+            <p id="uploadMessage"></p>
+            <iframe name="uploadActivity" id="uploadActivity"></iframe>
+        </div>
+        <h2>活动详细资料</h2>
+        <hr>
+        <form enctype="multipart/form-data" method="post" target="uploadActivity" action="/student/modify/" id="activityForm">
+        {% csrf_token %}
+            <div class="contents">
+                <input name="activityID" value="{{activity.id}}" style="display:none">
+                <div class="form-inline">
+                    <div class="form-group col-md-4 kind">
+                        <label for="type">类型<span class="necessary">(必填)</span></label>
+                        <select name="type" class="form-control" width="100%" id="type" value="{{activity.type}}">
+                            <option value="publicWelfare" {%ifequal activity.type "punlicWelfare"%}selected{%endifequal%}>公益活动</option>
+                            <option value="academic" {%ifequal activity.type "academic"%}selected{%endifequal%}>学术活动</option>
+                            <option value="welfareSport" {%ifequal activity.type "welfareSport"%}selected{%endifequal%}>公益体育活动</option>
+                            <option value="unWelfareSport" {%ifequal activity.type "unWelfareSport"%}selected{%endifequal%}>体育活动</option>
+                            <option value="other" {%ifequal activity.type "other"%}selected{%endifequal%}>其他活动</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4 welfareTime">
+                    {% ifequal activity.maxTime 0 %}
+                        {% ifequal activity.type "other" %}
+                            <label for="welfareTime">公益时长</label>
+                            <input type="text" id="welfareTime" name="maxTime" placeholder="最长公益时长" class="form-control {{maxTime}}" data-number="false" value = "{{activity.maxTime}}" readonly="readonly">
+                        {% else %}
+                            <label for="academicKind" style="display:block">讲座类别</label>
+                            <select name="academicKind" class="form-control" {%ifequal activity.detailType "other"%}style="width:50%"{% else %}style="width:100%"{%endifequal%}>
+                                <option value="technology" {%ifequal activity.detailType "technology"%}selected{%endifequal%}>科技类</option>
+                                <option value="culture" {%ifequal activity.detailType "culture"%}selected{%endifequal%}>人文类</option>
+                                <option value="career" {%ifequal activity.detailType "career"%}selected{%endifequal%}>职场类</option>
+                                <option value="internationalCommunication" {%ifequal activity.detailType "internationalCommunication"%}selected{%endifequal%}>国际交流类</option>
+                                <option value="newsMedia" {%ifequal activity.detailType "newsMedia"%}selected{%endifequal%}>新媒体传播类</option>
+                                <option value="other" {%ifequal activity.detailType "other"%}selected{%endifequal%}>其他类</option>
+                            </select>
+                            {%ifequal activity.detailType "other"%}
+                                <input type="text" id="detailKind" name="detailKind" placeholder="详细类别" class="form-control" data-text="false" style="width:50%" value="{{activity.detailType}}">
+                            {%endifequal%}
+                        {% endifequal %}
+                    {% else %}
+                        {% ifequal activity.type "unWelfareSport" %}
+                            <label for="unWelfareSportKind" style="display:block">是否有体育盖章</label>
+                            <select name="unWelfareSportKind" class="form-control" style="width:100%">
+                                <option value="no">否</option>
+                                <option value="yes">是</option>
+                            </select>
+                        {% else %}
+                            <label for="welfareTime">公益时长</label>
+                            <input type="text" id="welfareTime" name="maxTime" placeholder="最长公益时长" class="form-control {{maxTime}}" data-number="false" value = "{{activity.maxTime}}">
+                        {% endifequal %}
+                    {% endifequal %}
+                    </div>
+                    <div class="form-group col-md-4 maxPeople">
+                        <label for="maxPeople">最多参与人数</label>
+                        <input type="number" id="maxPeople" name="totalNumber" placeholder="最多参与人数" class="form-control {{totalNumber}}" data-number="false" value="{{activity.totalNumber}}">
+                    </div>
+                </div>
+                <hr>
+                <div class="form-inline">
+                    <div class="form-group col-md-4 title">
+                        <label for="title">标题<span class="necessary">(必填)</span></label>
+                        <input type="text" id="title" class="form-control {{title}}" name="title" placeholder="标题" data-text="false" value="{{activity.title}}">
+                    </div>
+                    <div class="form-group col-md-4 location">
+                        <label for="location">地点<span class="necessary">(必填)</span></label>
+                        <input type="text" id="location" class="form-control {{location}}" name="location" placeholder="地点" data-text="false" value="{{activity.location}}">
+                    </div>
+                    <div class="form-group col-md-4 host">
+                        <label for="host">举办方<span class="necessary">(必填)</span></label>
+                        <input type="text" id="host" class="form-control {{sponsor}}" name="sponsor" placeholder="举办方" data-text="false" value="{{activity.sponsor}}">
+                    </div>
+                </div>
+                <hr>
+                <div class="form-horizontal">
+                    <div class="form-group campus">
+                        <label class="col-sm-4" for="campus">校区<span class="necessary">(必填)</span></label>
+                        <div class="col-sm-4">
+                            <select name="campus" id="campus" class="form-control" value="{{activity.campus}}">
+                                <!-- <option value="south" {% ifequal activity.campus "south" %}selected{% endifequal %}>南校区</option>
+                                <option value="east" {% ifequal activity.campus "east" %}selected{% endifequal %}>东校区</option> -->
+                                <option value="north" {% ifequal activity.campus "north" %}selected{% endifequal %}>北校区</option>
+                                <option value="zhuhai" {% ifequal activity.campus "zhuhai" %}selected{% endifequal %}>珠海校区</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group campus">
+                        <label class="col-sm-4" for="selectSocieties">社团<span class="necessary">(必填)</span></label>
+                        <div class="col-sm-4">
+                            <select name="societies" id="selectSocieties" class="form-control" value="{{activity.societies.id}}">
+                            {% for item in societiesList %}
+                                <option value="{{item.id}}" {% ifequal item.id activity.societies.id %}selected{% endifequal %}>{{item.name}}</option>
+                            {% endfor %}
+                            </select>
+                        </div>
+                        <input type="text" placeholder="模糊筛选" id="searchSocieties" class="form-control"/>
+                    </div>
+                    <div class="form-group campus">
+                        <label class="col-sm-4 teacher" for="selectTeacher">业务指导老师<span class="necessary">(必填)</span></label>
+                        <div class="col-sm-4">
+                            <select name="teacher" id="selectTeacher" class="form-control" value="{{activity.teacher.tno}}">
+                            {% for item in teachersList %}
+                                <option value="{{item.tno}}" {% ifequal item.tno activity.teacher.tno %}selected{% endifequal %}>{{item.name}}</option>
+                            {% endfor %}
+                        </select>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-inline">
+                    <div class="form-group col-md-4 endTime">
+                        <label for="endTime">报名截止时间</label>
+                        <input type="text" id="endTime" name="deadline" placeholder="年-月-日 时:分" class="form-control" value="{{activity.deadline |date:"Y-m-d H:i"}}">
+                    </div>
+                    <div class="form-group col-md-4 startTime">
+                        <label for="startTime">活动开始时间<span class="necessary">(必填)</span></label> 
+                        <input type="text" id="startTime" name="startDateTime" placeholder="年-月-日 时:分" class="form-control {{startDateTime}}" data-time="false" value="{{activity.startDateTime |date:"Y-m-d H:i"}}">
+                    </div>
+                    <div class="form-group col-md-4 finishTime">
+                        <label for="finishTime">活动结束时间<span class="necessary">(必填)</span></label>
+                        <input type="text" id="finishTime" name="endDateTime" placeholder="年-月-日 时:分" class="form-control {{endDateTime}}" data-time="false" value="{{activity.endDateTime |date:"Y-m-d H:i"}}">
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="content">
+                <h2 title="展示给用户">活动描述</h2> 
+                <textarea name="content">{{activity.content | safe}}</textarea>
+            </div>
+            <hr />
+            {% if isApplier %}
+            {% if submission %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>申请类型</th>
+                        <th>开始时间</th>
+                        <th>结束时间</th>
+                        <th>课室 / 地点</th>
+                        <th>桌子数量</th>
+                        <th>沙滩椅数量</th>
+                        <th>其他物资</th>
+                        <th>附件</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for item in submission %}
+                <tr>
+                    <td>{{item.get_type_display}}</td>
+                    <td {% if not item.startTimeMark %} class="tag" {% endif %}>{{item.startTime|date:"Y-m-d"}} {{item.startTime|time:"H:i"}}</td>
+                    <td {% if not item.endTimeMark %} class="tag" {% endif %}>{{item.endTime|date:"Y-m-d"}} {{item.endTime|time:"H:i"}}</td>
+                    <td {% if not item.locationMark %} class="tag" {% endif %}>
+                        {% ifnotequal item.location "[]" %}
+                            {{item.location}}
+                        {% endifnotequal %}
+                        {% ifequal item.location "[]" %}
+                            {% for location in item.locations.all %}
+                                {{location.name}}{{location.locationid}}、
+                            {% endfor %}
+                        {% endifequal %}
+                    </td>
+                    <td {% if not item.numberMark %} class="tag" {% endif %}>{% if item.number %}{{item.number}}{% endif %}</td>
+                    <td {% if not item.chairNumberMark %} class="tag" {% endif %}>{% if item.chairNumber %}{{item.chairNumber}}{% endif %}</td>
+                    <td {% if not item.otherNumberMark %} class="tag" {% endif %}>{% if item.otherNumber %}{{item.otherNumber}}{% endif %}</td>
+                    <td>
+                        {% if item.file %}
+                        <a class="btn btn-success" href="{{item.file.url}}">下载</a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+            {% if attachment %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>资料描述</th>
+                        <th>资料下载</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for item in attachment %}
+                <tr>
+                    <td {% if not item.attachmentMark %} class="tag" {% endif %}>{{item.description}}</td>
+                    <td><a class="btn btn-success" href="{{item.file.url}}">下载</a></td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td>无</td>
+                    <td><a class="btn btn-success disabled" href="#">无</a></td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+            {% endif %}
+            <hr />
+            <h2 title="展示给老师">申请材料</h2>
+            <div class="fujian">
+                策划等附件上传:
+                <button id="attach" class="btn btn-success">添加</button>
+                <button id="reduce" class="btn btn-danger">减少</button>
+            </div>
+            <hr />
+            <div class="formDownLoad">
+                <div class="col-sm-8">
+                    <select class="form-control" id="applyTable">
+                    {% for table in tables %}
+                        <option value="{{table.file.url}}">{{table.description}}</option>
+                    {% endfor %}
+                    </select>
+                </div>
+                <a href="{{firstTable}}" target="_blank" class="btn btn-success" id="tableUrl">确定下载</a>
+            </div>
+            <hr />
+            <div class="addApply"><button type="button" class="btn btn-warning" data-zhuhaiNumber="{{zhuhaiNumber.desk}}|{{zhuhaiNumber.beachDesk}}|{{zhuhaiNumber.tent}}" data-northNumber="{{northNumber.desk}}|{{northNumber.beachDesk}}|{{northNumber.tent}}" data-eastNumber="{{eastNumber.desk}}|{{eastNumber.beachDesk}}|{{eastNumber.tent}}" data-southNumber="{{southNumber.desk}}|{{southNumber.beachDesk}}|{{southNumber.tent}}" data-zhuhaiTotalNumber="{{zhuhaiTotalNumber.desk}}|{{zhuhaiTotalNumber.beachDesk}}|{{zhuhaiTotalNumber.tent}}" data-northTotalNumber="{{northTotalNumber.desk}}|{{northTotalNumber.beachDesk}}|{{northTotalNumber.tent}}" data-eastTotalNumber="{{eastTotalNumber.desk}}|{{eastTotalNumber.beachDesk}}|{{eastTotalNumber.tent}}" data-southTotalNumber="{{southTotalNumber.desk}}|{{southTotalNumber.beachDesk}}|{{southTotalNumber.tent}}">增加申请(如：课室申请)</button></div>
+            <div>
+                <button type="submit" class="btn btn-success col-md-2" id="submit">保存</button>
+                <button type="button" class="btn btn-danger col-md-2" id="cancel">取消</button>
+                <div class="clear"></div>
+            </div>
+            <div class="tip">请重新确认输入信息是否有误！</div>
+        </form>
+        <p id="activityMessage"></p>
+    </div>
+</div>
+{% include "footPart.html" %}
+{% endblock %}
+{% block importjs %}
+<script src="/static/js/activityDetail.js"></script>
+<script src="/static/tinymce/tinymce.min.js" type="text/javascript"></script>
+<script src="/static/js/applyActivity.js" type="text/javascript"></script>
+{% endblock %}

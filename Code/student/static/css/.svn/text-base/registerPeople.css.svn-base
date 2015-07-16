@@ -1,0 +1,57 @@
+.onekey{
+	overflow: hidden;
+}
+.onekey a {
+	border-radius: 5px;
+}
+.onekey .onekeyToSignIn{
+	float: left;
+	text-decoration: none;
+	cursor: pointer;
+	margin-right: 12px;
+	padding: 6px;
+}
+.onekey .onekeyToSignOut{
+	float: left;
+	text-decoration: none;
+	cursor: pointer;
+	padding: 6px;
+}
+.confirmEnd{
+	float: right;
+}
+.name{
+	float: left;
+	padding: 14.4px 24px;
+	font-size: 16px;
+}
+.num{
+	float: left;
+	padding: 14.4px 24px;
+	font-size: 16px;
+}
+.signIn{
+	float: right;
+	padding: 12px 24px;
+	cursor: pointer;
+	width: 72px;
+}
+.signOut{
+	float: right;
+	padding: 12px 24px;
+	cursor: pointer;
+	width: 72px;
+}
+.signIn img, .signOut img{
+	width: 100%;
+}
+.announcement{
+	float: right;
+	margin-right: 12px;
+}
+.announcementText{
+	display: none;
+}
+.announcementText textarea{
+	margin: 12px 0;
+}

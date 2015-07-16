@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block titlebar %}权益在线{% endblock %}
+{% block import %}
+<link rel="stylesheet" type="text/css" href="/static/css/rightsOnline.css">
+<link rel="stylesheet" type="text/css" href="/static/css/principalTopBar.css">
+{% endblock %}
+{% block content %}
+{% include "principalPageTop.html" %}
+<section class="middlePart">
+    <div class="titleItem"><h1>权益在线</h1></div>
+    {% for item in feedbacks %}
+    <dl class="activityItem" id="feedback{{item.id}}">
+        <dt>
+            <div class="name"><span>姓名 : {{item.name}}</span></div>
+            <div class="clear">
+            </div>
+        </dt>
+        <hr />
+        <dt class="content">
+            <p>{{item.content}}</p>
+            <adsress class="contact">
+                联系邮箱 : {{item.email}}<br>
+                联系电话 : {{item.phone}}
+            </address>
+        </dt>
+        {% ifequal type "rights" %}
+        <div class="remark">
+            <span>回复 : <span></span>
+        </div>
+        <div class="remark">
+            <a data-toggle="modal" data-target="#confirm"></a>
+            <textarea placeholder="回复区/必填" class="form-control" id="feedbackContent"></textarea>
+            <button class="btn btn-success feedback" data-name="huifu" data-id="{{item.id}}">回复</button>
+        </div>
+        {% endifequal %}
+        {% ifequal type "finish" %}
+        <div class="remark">
+            <h3><strong>回复 : </strong></h3>
+        </div>
+        <div class="remark">
+            <span>{{item.reply}}</span>
+        </div>
+        {% endifequal %}
+        <div class="clear">
+        </div>
+    </dl>
+    {% empty %}
+    <div class="ifEmpty">
+        当前项还没有权益在线提交！
+    </div>
+    {% endfor %}
+</section>
+{% include "footPart.html" %}
+{% endblock %}
+{% block importjs %}
+<script src="/static/js/rightsOnline.js"></script>
+{% endblock %}

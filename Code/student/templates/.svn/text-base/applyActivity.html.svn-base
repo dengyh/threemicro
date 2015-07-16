@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+{% block titlebar %}活动申请{% endblock %}
+{% block import %}
+<link rel="stylesheet" type="text/css" href="/static/css/applyActivity.css">
+<link rel="stylesheet" type="text/css" href="/static/css/studentTopBar.css">
+{% endblock %}
+{% block content %}
+{% include "studentPageTop.html" %}
+<div class="middlePart">
+    <div class="titleItem"><h1>申请活动</h1></div>
+    <div class="activityContent">
+        <div class="shangChuan">
+            <iframe name="uploadFrame" id="uploadFrame"></iframe>
+            <form action="/student/upload/" method="post" target="uploadFrame" enctype="multipart/form-data" id="uploadPictures" class="upload">
+            {% csrf_token %}
+                <input type="file" name="pictures" multiple="multiple" class="originalUpload" style="display:none"/>
+                <button type="button" class="btn btn-default newUploadBtn">宣传品电子版上传</button>
+                <input type="text" class="form-control newUploadInput" disabled>
+                <button type="submit"><img src="/static/images/upload.png"></button>
+            </form>
+            <p id="uploadMessage"></p>
+            <iframe name="uploadActivity" id="uploadActivity"></iframe>
+        </div>
+        <h2>活动详细资料</h2>
+        <hr>
+        <form enctype="multipart/form-data" method="post" target="uploadActivity" action="/student/create/" id="activityForm">
+        {% csrf_token %}
+            <div class="contents">
+                <div class="form-inline">
+                    <div class="form-group col-md-4 kind">
+                        <label for="type">类型<span class="necessary">(必填)</span></label>
+                        <select name="type" class="form-control" width="100%" id="type">
+                            <option value="publicWelfare">公益活动</option>
+                            <option value="academic">学术活动</option>
+                            <option value="welfareSport">公益体育活动</option>
+                            <option value="unWelfareSport">体育活动</option>
+                            <option value="other">其他活动</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4 welfareTime">
+                        <label for="welfareTime">公益时长</label>
+                        <input type="text" id="welfareTime" name="maxTime" placeholder="最长公益时长" class="form-control" data-number="false">
+                    </div>
+                    <div class="form-group col-md-4 maxPeople">
+                        <label for="maxPeople">最多参与人数</label>
+                        <input type="number" id="maxPeople" name="totalNumber" placeholder="最多参与人数" class="form-control" data-number="false">
+                    </div>
+                </div>
+                <hr>
+                <div class="form-inline">
+                    <div class="form-group col-md-4 title">
+                        <label for="title">标题<span class="necessary">(必填)</span></label>
+                        <input type="text" id="title" class="form-control" name="title" placeholder="标题" data-text="false">
+                    </div>
+                    <div class="form-group col-md-4 location">
+                        <label for="location">地点<span class="necessary">(必填)</span></label>
+                        <input type="text" id="location" class="form-control" name="location" placeholder="地点" data-text="false">
+                    </div>
+                    <div class="form-group col-md-4 host">
+                        <label for="host">举办方<span class="necessary">(必填)</span></label>
+                        <input type="text" id="host" class="form-control" name="sponsor" placeholder="举办方" data-text="false">
+                    </div>
+                </div>
+                <hr>
+                <div class="form-horizontal">
+                    <div class="form-group campus">
+                        <label class="col-sm-4" for="campus">校区<span class="necessary">(必填)</span></label>
+                        <div class="col-sm-4">
+                            <select name="campus" id="campus" class="form-control">
+                                <option value="zhuhai">珠海校区</option>
+                                <!-- <option value="south">南校区</option>
+                                <option value="east">东校区</option> -->
+                                <option value="north">北校区</option>
+                                
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group campus">
+                        <label class="col-sm-4" for="selectSocieties">社团<span class="necessary">(必填)</span></label>
+                        <div class="col-sm-4">
+                            <select name="societies" id="selectSocieties" class="form-control">
+                            {% for item in societies %}
+                                <option value="{{item.id}}">{{item.name}}</option>
+                            {% endfor %}
+                            </select>
+                        </div>
+                        <input type="text" placeholder="模糊筛选" id="searchSocieties" class="form-control"/>
+                    </div>
+                    <div class="form-group campus">
+                        <label class="col-sm-4 teacher" for="selectTeacher">业务指导老师<span class="necessary">(必填)</span></label>
+                        <div class="col-sm-4">
+                            <select name="teacher" id="selectTeacher" class="form-control">
+                            {% for item in teachers %}
+                                <option value="{{item.tno}}">{{item.name}}</option>
+                            {% endfor %}
+                        </select>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-inline">
+                    <div class="form-group col-md-4 endTime">
+                        <label for="endTime">报名截止时间</label>
+                        <input type="text" id="endTime" name="deadline" placeholder="格式:1999-01-01 01:01" class="form-control" >
+                    </div>
+                    <div class="form-group col-md-4 startTime">
+                        <label for="startTime">活动开始时间<span class="necessary">(必填)</span></label> 
+                        <input type="text" id="startTime" name="startDateTime" placeholder="格式:1999-01-01 01:01" class="form-control" data-time="false">
+                    </div>
+                    <div class="form-group col-md-4 finishTime">
+                        <label for="finishTime">活动结束时间<span class="necessary">(必填)</span></label>
+                        <input type="text" id="finishTime" name="endDateTime" placeholder="格式:1999-01-01 01:01" class="form-control" data-time="false">
+                    </div>
+                </div>
+            </div>
+            <hr>
+            
+            <div class="content">
+                <h2 title="展示给用户">活动描述</h2> 
+                <textarea name="content"></textarea>
+            </div>
+            <hr />
+            <h2 title="展示给老师">申请材料</h2>
+            <div class="fujian">
+                策划等附件上传:
+                <button id="attach" class="btn btn-success">添加</button>
+                <button id="reduce" class="btn btn-danger">减少</button>
+            </div>
+            <hr />
+            <div class="formDownLoad">
+                <div class="col-sm-8">
+                    <select class="form-control" id="applyTable">
+                    {% for table in tables %}
+                        <option value="{{table.file.url}}">{{table.description}}</option>
+                    {% endfor %}
+                    </select>
+                </div>
+                <a href="{{firstTable}}" target="_blank" class="btn btn-success" id="tableUrl">确定下载</a>
+            </div>
+            <hr />
+            <div class="addApply"><button type="button" class="btn btn-warning" data-zhuhaiNumber="{{zhuhaiNumber.desk}}|{{zhuhaiNumber.beachDesk}}|{{zhuhaiNumber.tent}}" data-northNumber="{{northNumber.desk}}|{{northNumber.beachDesk}}|{{northNumber.tent}}" data-eastNumber="{{eastNumber.desk}}|{{eastNumber.beachDesk}}|{{eastNumber.tent}}" data-southNumber="{{southNumber.desk}}|{{southNumber.beachDesk}}|{{southNumber.tent}}" data-zhuhaiTotalNumber="{{zhuhaiTotalNumber.desk}}|{{zhuhaiTotalNumber.beachDesk}}|{{zhuhaiTotalNumber.tent}}" data-notrhTotalNumber="{{northTotalNumber.desk}}|{{northTotalNumber.beachDesk}}|{{northTotalNumber.tent}}" data-eastTotalNumber="{{eastTotalNumber.desk}}|{{eastTotalNumber.beachDesk}}|{{eastTotalNumber.tent}}" data-southTotalNumber="{{southTotalNumber.desk}}|{{southTotalNumber.beachDesk}}|{{southTotalNumber.tent}}">增加申请(如：课室申请)</button></div>
+            <div>
+                <button type="submit" class="btn btn-success col-md-2" id="submit">提交</button>
+                <div class="clear"></div>
+            </div>
+            <div class="tip">请重新确认输入信息是否有误！</div>
+        </form>
+        <p id="activityMessage"></p>
+    </div>
+    
+</div>
+{% include "footPart.html" %}
+{% endblock %}
+{% block importjs %}
+<script src="/static/tinymce/tinymce.min.js" type="text/javascript"></script>
+<script src="/static/js/applyActivity.js" type="text/javascript"></script>
+<script>
+    window.onload=function(){
+        var text = "此处空白需要按顺序填写的是1.活动名字;2、活动主办方.承办方;3.活动主要概况(简述活动);4.活动的赞助情况;5.活动外请嘉宾情况;6.活动大致举办地点及时间";
+        setTinymec(text);
+         //tinymec内容设置
+        function setTinymec(text){
+            tinyMCE.activeEditor.setContent(text);
+        }
+    }
+    
+</script>
+{% endblock %}

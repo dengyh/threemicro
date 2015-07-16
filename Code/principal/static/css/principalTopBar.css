@@ -1,0 +1,37 @@
+body{
+	background-color: #ebebeb;
+}
+/*顶栏到这里结束*/
+.screenPeople,.attendedPeople{
+	text-align: center;
+	padding: 0;
+	background-color: #417705;
+	color: #f6a924;
+	margin: 1rem;
+	width: 10rem;
+	float: right;
+	padding-top: 0.3rem;
+	padding-bottom: 0.3rem;
+	border-radius: 10px ;
+	font-size: 2rem;
+	box-shadow: none;
+}
+.screenPeople:hover,.attendedPeople:hover{
+	background-color: #365715;
+	color: white;
+}
+.middlePart{
+	margin: 0rem auto;
+	margin: 0 10%;
+	width: 80%;
+}
+.titleItem h1{
+	margin: 5rem 0rem;
+	font-weight: 700;
+	padding-bottom: 0.5rem;
+	border-bottom: 5px solid #6bb070;
+}
+.name{
+	font-size: 2rem;
+	font-weight: 700;
+}

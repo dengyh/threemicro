@@ -1,0 +1,121 @@
+<div class="topBack">
+    <div class="container topPart navbar-fixed-top">
+        <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+            <div class="container">
+                <div class="logo">
+                    <img src="/static/images/logo.png">
+                </div>
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <!-- <div class="animate"></div> -->
+                  <a class="navbar-brand navs" data-href="/student/">首页</a>
+                  
+                </div>
+                <nav class="navbar-collapse collapse navigation">
+                  <ul class="nav navbar-nav">
+                    <li class="dropdown dropItem">
+                      <!-- <div class="animate"></div> -->
+                      <a class="dropdown-toggle navs" data-toggle="dropdown">报名 <span class="caret"></span></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <!-- <li><a data-href="/student/campus/south/">南校区</a></li>
+                        <li><a data-href="/student/campus/east/">东校区</a></li> -->
+                        <li><a data-href="/student/campus/north/">北校区</a></li>
+                        <li><a data-href="/student/campus/zhuhai/">珠海校区</a></li>
+                      </ul>
+                    </li>
+                    <li class="apply "><!-- <div class="animate"></div> --><a data-href="/student/apply/" class="navs">申请</a></li>
+                    <li class="dropdown dropItem ">
+                      <!-- <div class="animate"></div> -->
+                      <a class="dropdown-toggle navs" data-toggle="dropdown">查看 <span class="caret"></span></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a data-href="/student/registing/">已经报名的公益活动</a></li>
+                        <li><a data-href="/student/applied/">已经申请的活动</a></li>
+                        <li><a data-href="/student/attended/">参加过的公益活动</a></li>
+                      </ul>
+                    </li>
+                    <li class="modifyMessage" data-toggle="modal" data-target="#modifyMes"><!-- <div class="animate"></div> --><a class="navs">修改个人信息</a></li>
+                    <li class="login"><!-- <div class="animate"></div> --><a data-href="/logout/" class="navs">退出</a></li>
+                    <div class="clear"></div>
+                  </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 修改个人资料.学生 -->
+    <div class="modal fade" id="modifyMes" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="closeBtn">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                </div>
+                <form role="form" action="/student/change/" method="post" id="studentChange">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">姓名</label>
+                        <input type="text" class="form-control" name="name" value="{{name}}" placeholder="姓名">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">性别</label>
+                        <select name="gender" class="form-control sex" data-value="{{gender}}">
+                            <option value="male">男</option>
+                            <option value="female">女</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">学号</label>
+                        <input type="text" class="form-control" name="sno" {% if sno %}value="{{sno}}"{% endif %} placeholder="学号">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">学院</label>
+                        <input type="text" class="form-control" name="college" {% if college %}value="{{college}}"{% endif %} placeholder="学院">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">年级</label>
+                        <select name="grade" class="form-control grade" data-value="{{grade}}">
+                            <option value="">请选择年级</option>
+                            <option value="2008级">2008级</option>
+                            <option value="2009级">2009级</option>
+                            <option value="2010级">2010级</option>
+                            <option value="2011级">2011级</option>
+                            <option value="2012级">2012级</option>
+                            <option value="2013级">2013级</option>
+                            <option value="2014级">2014级</option>
+                            <option value="2015级">2015级</option>
+                            <option value="2016级">2016级</option>
+                            <option value="2017级">2017级</option>
+                            <option value="2018级">2018级</option>
+                            <option value="2019级">2019级</option>
+                            <option value="2020级">2020级</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">联系电话</label>
+                        <input type="text" class="form-control" name="phone" {% if phone %}value="{{phone}}"{% endif %} placeholder="请输入长号">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">邮箱</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" name="email" {% if name %}value="{{email}}"{% endif %} placeholder="邮箱">
+                    </div>
+                    <!-- <div class="form-group">
+                        <label for="exampleInputEmail1">所属社团</label>
+                        <div class="organizations">
+                            <input type="text" class="form-control" name="organization" value="{{organization}}" placeholder="社团名字">
+                            <div class="addOrDelete">
+                                <button type="button" class="add btn btn-info">添加所属社团</button>
+                                <button class="delete btn btn-danger" type="button">减少所属社团</button>
+                            </div>
+                            
+                        </div>
+                    </div> -->
+                    <button type="submit" class="btn btn-success modify">修改</button>
+                </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+        <div class="vertical"><!-- vertical-comment --></div>
+    </div>

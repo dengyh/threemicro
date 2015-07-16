@@ -1,0 +1,10 @@
+{% extends "microbase.html" %}
+{% block titlebar %}禁止区{% endblock %}
+{% block import %}
+<link rel="stylesheet" type="text/css" href="/static/css/micro404.css">
+{% endblock %}
+{% block content %}
+<div data-role="content">
+    <h1>学生的禁区哦，只有家炜能进哦！！* . *</h1>
+</div>
+{% endblock %}

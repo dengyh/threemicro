@@ -1,0 +1,14 @@
+<div class="footPart navbar-fixed-foot">
+    
+    <address class="baseInfo">
+    	电话:020-39332232<br>
+    	邮箱:admin@zdtw.sysu.edu.cn<br>
+        所属单位:共青团中山大学委员会<br>
+        <a data-href="http://www.sysu.edu.cn">中山大学</a>
+        <a data-href="http://zdtw.sysu.edu.cn/">共青团中山大学委员会</a>
+        
+    </address>
+    <img class="baseImage" src="/static/images/twoDimension.png">
+    <!-- <div class="baseImageDes">团委微信通道</div> -->
+    
+</div>

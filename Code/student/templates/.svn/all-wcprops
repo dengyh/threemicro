@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/ThreeMicro/!svn/ver/355/Code/student/templates
+END
+footPart.html
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/ThreeMicro/!svn/ver/311/Code/student/templates/footPart.html
+END
+activityDetail.html
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/ThreeMicro/!svn/ver/355/Code/student/templates/activityDetail.html
+END
+applyActivity.html
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/ThreeMicro/!svn/ver/313/Code/student/templates/applyActivity.html
+END
+signUpActivity.html
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/ThreeMicro/!svn/ver/311/Code/student/templates/signUpActivity.html
+END
+studentPage.html
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/ThreeMicro/!svn/ver/275/Code/student/templates/studentPage.html
+END
+screenPeople.html
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/ThreeMicro/!svn/ver/292/Code/student/templates/screenPeople.html
+END
+attendedActivity.html
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/ThreeMicro/!svn/ver/292/Code/student/templates/attendedActivity.html
+END
+student.html
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/ThreeMicro/!svn/ver/238/Code/student/templates/student.html
+END
+studentPageTop.html
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/ThreeMicro/!svn/ver/350/Code/student/templates/studentPageTop.html
+END
+registerPeople.html
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/ThreeMicro/!svn/ver/311/Code/student/templates/registerPeople.html
+END
+appliedActivity.html
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/ThreeMicro/!svn/ver/311/Code/student/templates/appliedActivity.html
+END
+signingActivity.html
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/ThreeMicro/!svn/ver/350/Code/student/templates/signingActivity.html
+END

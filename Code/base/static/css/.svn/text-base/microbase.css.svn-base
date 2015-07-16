@@ -1,0 +1,20 @@
+html,h1,div,button,a{
+    text-shadow: none!important;
+}
+html,h1,div,button,a{
+    font-family: "微软雅黑"!important;
+}
+.ui-page-theme-a{
+    background-color: transparent;
+}
+.alert{
+    background-color: #6bb070;
+}
+#attendedActivity{
+    background-color: white;
+    height: 36.98rem;
+}
+.blank_{
+    display: inline-block;
+    width: 1rem;
+}

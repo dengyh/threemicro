@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block titlebar %}校区活动{% endblock %}
+{% block import %}
+<link rel="stylesheet" type="text/css" href="/static/css/campusActivity.css">
+<link rel="stylesheet" type="text/css" href="/static/css/principalTopBar.css">
+{% endblock %}
+{% block content %}
+{% include "principalPageTop.html" %}
+<section class="middlePart">
+    <div class="titleItem"><h1>{{campus}}活动</h1></div>
+    {% for activity in activities %}
+    <dl class="activityItem">
+        <dt>
+            <div class="name"><span>{{activity.title}}</span></div>
+        </dt>
+        <hr class="divider">
+        <dd>
+            <span class="black">
+                负责人 : 
+                <span class="smallFont">{{activity.sponsor}}</span>
+            </span>
+            <span class="black">
+                校区 : 
+                <span class="smallFont">{{activity.get_campus_display}}</span>
+            </span>
+            <span class="black">
+                时间 : 
+                <span class="smallFont">{{activity.startDateTime|date:"Y-m-d"}} {{activity.startDateTime|time:"H:i"}} -- {{activity.endDateTime|date:"Y-m-d"}} {{activity.endDateTime|time:"H:i"}}</span>
+            </span>
+            <span class="black">
+                联系方式 : <span class="smallFont">{{activity.student.phone}}</span>
+            </span>
+            <hr class="divider">
+            <a data-href="/principal/detail/{{activity.id}}/"><button class="detail">详细信息</button></a>
+            <div class="clear"></div>
+        </dd>
+    </dl>
+    {% empty %}
+    <div class="ifEmpty">
+        当前项还没有活动！
+    </div>
+    {% endfor %}
+</section>
+{% include "footPart.html" %}
+{% endblock %}

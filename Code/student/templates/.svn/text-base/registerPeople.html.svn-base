@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block titlebar %}参与人员{% endblock %}
+{% block import %}
+<link rel="stylesheet" type="text/css" href="/static/css/registerPeople.css">
+<link rel="stylesheet" type="text/css" href="/static/css/studentTopBar.css">
+{% endblock %}
+{% block content %}
+{% include "studentPageTop.html" %}
+<div class="middlePart">
+    <div class="titleItem"><h1>人员签到</h1></div>
+    <div class="onekey">
+        <a data-toggle="modal" data-target="#confirm"></a>
+        <a class="onekeyToSignIn btn btn-warning" name="onekeyToSignIn" data-aid="{{activity.id}}" type="button">一键签到</a>
+        <a class="onekeyToSignOut btn btn-warning" name="onekeyToSignOut" data-aid="{{activity.id}}" type="button">一键签退</a>
+        <a type="button" class="confirmEnd btn btn-success" data-aid="{{activity.id}}" >确认结束</a>
+        <a type="button" class="btn btn-primary announcement" data-aid="{{activity.id}}">通知内容</a>
+        
+    </div>
+    <div class="announcementText">
+        <textarea class='form-control' rows='3' placeholder='通知内容'></textarea>
+        <div>
+            <button type="button" class="btn btn-success ">确定发送</button>
+        </div>
+    </div>
+    {% for item in registrants %}
+    <dl class="activityItem">
+        <dt class="name">{{item.student.name}}</dt>
+        <dt class="num">{{item.student.netid}}</dt>
+        <dt class="num">{{item.student.get_gender_display}}</dt>
+        <dt class="num">{{item.student.phone}}</dt>
+        <dt class="num">{{item.student.grade}} {{item.student.college}}</dt>
+        <div class="signingBtn" data-aid="{{item.activity.id}}">
+            <a class="signOut" name="signOut" data-id="{{item.id}}"><img src="/static/images/jian.png"></a>
+            <a class="signIn" name="signIn" data-id="{{item.id}}"><img src="/static/images/jia.png"></a>
+        </div>
+        <div class="clear">
+        </div>
+    </dl>
+    {% empty %}
+        <div class="ifEmpty">
+            当前还没有人报名！
+        </div>
+    {% endfor %}
+</div>
+{% include "footPart.html" %}
+{% endblock %}
+{% block importjs %}
+<script src="/static/js/registerPeople.js" type="text/javascript"></script>
+{% endblock %}

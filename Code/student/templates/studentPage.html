@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block titlebar %}学生首页{% endblock %}
+{% block import %}
+<link rel="stylesheet" type="text/css" href="/static/css/studentPage.css">
+{% endblock %}
+{% block content %}
+{% include "studentPageTop.html" %}
+<div class="middlePart">
+    <div class="checkOutApplied">
+        <figure class="effect-marley">
+            <a data-href="/student/applied/">
+                <img src="/static/images/applyState.jpg" alt="申请">
+                <figcaption>
+                    <h2>申请状态</h2>
+                    <p>你可以通过这里查看已经申请活动的状态</p>
+                </figcaption>
+            </a>         
+        </figure>
+    </div>     
+    <div class="checkOutSigned">
+        <figure class="effect-marley">
+            <a data-href="/student/registing/">
+                <img src="/static/images/signedState.jpg" alt="报名">
+                <figcaption>
+                    <h2>报名状态</h2>
+                    <p>你可以通过这里查看已经报名活动的状态</p>
+                </figcaption>
+            </a>         
+        </figure>
+    </div>  
+</div>
+{% include "footPart.html" %}
+<script src="/static/js/studentPage.js"></script>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "microbase.html" %}
+{% block titlebar %}新闻资讯{% endblock %}
+{% block import %}
+<link rel="stylesheet" type="text/css" href="/static/css/microAttendedActivity.css">
+{% endblock %}
+{% block content %}
+<div data-role="header" id="latestHeader">
+    <h1>新闻资讯</h1>
+</div>
+<div data-role="content" id="attendedActivity">
+    {% for item in newsInfo %}
+    <div class="activityItem" id="1">
+        <dt>{{item.newsTitle}}</dt>
+        <dd>时间 : {{item.newsTime}}</dd>
+        <a href="/news/micro/{{type}}/detail/{{item.newsUrl}}/"><button id="detail">详细信息</button></a>
+    </div>
+    {% empty %}
+        <p class="alert">没有任何活动</p>
+    {% endfor %}
+</div>
+{% endblock %}

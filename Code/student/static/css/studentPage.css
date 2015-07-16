@@ -1,0 +1,46 @@
+body{
+	background-color: #ebebeb;
+}
+.topBack{
+	font-size: 16px;
+}
+.login a{
+	padding-left: 5px;
+	display: block;
+}
+/*.middlePart{
+    margin: 0 auto;
+    margin: 0 10%;
+    width: 80%;
+    padding: 3% 0;
+    padding-bottom: 0;
+    text-align: center;
+}*/
+.middlePart img{
+	width: 100%;
+}
+.content{
+	background-color: white;
+}
+.activityForcast,.qualityActivity,.wanderLibrary{
+	width: 31%;
+	display: inline-block;
+	margin-right: 2%;
+}
+.detail{
+	background-color: white;
+}
+.detail a{
+	text-align: center;
+	display: block;
+	background-color: #dfdfdf;
+	width: 72px;
+	height: 30px;
+	text-decoration: none;
+	color: black;
+	cursor: pointer;
+	font-size: 16px;
+}
+.detail a:hover{
+	background-color: #91bc66;
+}

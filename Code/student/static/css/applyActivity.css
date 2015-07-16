@@ -1,0 +1,124 @@
+iframe{
+    display: none;
+}
+.activityContent{
+	background-color: white;
+	border-radius: 10px;
+	padding: 3% 10%;
+}
+form{
+	overflow: hidden;
+	font-size: 16px;
+	color: #417705;
+}
+form input,form select{
+	border: 1px solid #979797;
+}
+.upload input{
+	float: left;
+}
+.upload button{
+	float: right;
+}
+
+.kind select{
+	width: 100%!important;
+}
+.upload button{
+	background-color: transparent;
+	border: none;
+	font-size: 16px;
+	font-weight: 700;
+}
+.upload img{
+	width: 24px;
+}
+.fujian{
+	margin: 12px 0;
+}
+.form-inline{
+	overflow: hidden;
+}
+#submit{
+	margin-right: 20px;
+}
+.tip{
+	display: none;
+	color: red;
+}
+.form-inline .form-group{
+	margin-bottom: 12px;
+}
+.campus label{
+	padding-left: 30px;
+}
+.addApply{
+	margin-top: 12px;
+	margin: 36px 0;
+}
+.sonApply{
+	padding: 0;
+	margin: 12px 0;
+}
+.sonApply .col-md-4{
+	padding-left: 0;
+}
+.inputCss{
+	color: #555;
+	background-color: white;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	height: 34px;
+	margin:0 12px;
+	padding: 0 12px;
+}
+.sonApply div{
+	margin-top: 12px;
+	overflow: hidden;
+}
+.newSubmission{
+	margin-top: 24px!important;
+	/*height: 36px;*/
+	display: none;
+}
+#uploadMessage{
+	
+	overflow: auto;
+}
+#applyTable{
+	margin-top: 0;
+}
+.formDownLoad>div{
+	padding: 0;
+	margin-right: 10px;
+}
+.formDownLoad{
+	padding: 10px 0;
+}
+.inputFile{
+	border: 1px solid #ccc!important;
+}
+.newSubmissions{
+	display: none;
+}
+.newSubmissions input{
+	border: none;
+}
+.newUploadBtn{
+	float: left!important;
+	background-color: #ccc!important;
+}
+.newUploadInput{
+	width: 50%;
+}
+h2 {
+	color: black;
+}
+#searchSocieties {
+	float: left;
+	width: 25%;
+	margin-left: 10px;
+}
+.content>textarea{
+	height: 300px;
+}

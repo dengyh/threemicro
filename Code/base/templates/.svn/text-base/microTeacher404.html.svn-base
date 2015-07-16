@@ -1,0 +1,10 @@
+{% extends "microbase.html" %}
+{% block titlebar %}禁止区{% endblock %}
+{% block import %}
+<link rel="stylesheet" type="text/css" href="/static/css/micro404.css">
+{% endblock %}
+{% block content %}
+<div data-role="content">
+    <h1>学生的事，老师就不要来管啦！！- -</h1>
+</div>
+{% endblock %}

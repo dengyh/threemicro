@@ -1,0 +1,25 @@
+{% extends "microbase.html" %}
+{% block titlebar %}校园新闻{% endblock %}
+{% block import %}
+<link rel="stylesheet" type="text/css" href="/static/css/principalTopBar.css">
+{% endblock %}
+{% block content %}
+<div class="middlePart">
+    <div class="titleItem"><h1>活动资讯</h1></div>
+    {% for item in newsInfo %}
+    <div class="activityItem">
+        <dt>
+            <div class="name"><span>{{item.newsTitle}}</span></div>
+        </dt>
+        <hr class="divider">
+        <dd>
+            <div>
+                <span>发表时间：</span><span class="smallFont">{{item.newsTime}}</span>
+            </div>
+        </dd>
+        <a href="{{item.newsUrl}}"><button class="detail">详细信息</button></a>
+        <div class="clear"></div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

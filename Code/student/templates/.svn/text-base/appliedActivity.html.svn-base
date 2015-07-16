@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block titlebar %}已经申请的活动{% endblock %}
+{% block import %}
+<link rel="stylesheet" type="text/css" href="/static/css/studentTopBar.css">
+<link rel="stylesheet" type="text/css" href="/static/css/appliedActivity.css">
+{% endblock %}
+{% block content %}
+{% include "studentPageTop.html" %}
+<div class="middlePart">
+    
+    <div>
+        <div class="titleItem"><h1>已经申请的活动</h1></div>
+    {% for item in activities %}
+    <dl class="activityItem">
+        <dt>
+            {% include "label.html" %}
+            {{item.title}}
+        </dt>
+        <dd class="littleModule">
+            活动时间 : {{item.startDateTime|date:"Y-m-d"}} {{item.startDateTime|time:"H:i"}} -- {{item.endDateTime|date:"Y-m-d"}} {{item.endDateTime|time:"H:i"}}
+            <br>
+            活动地点 : {{item.location}}
+        </dd>
+        <dd>
+            业务指导老师意见 : 
+            <span class="smallFont">{% if item.firstRemark %}{{item.firstRemark}}{% else %}(未审批){% endif %}</span>
+        </dd>
+        <dd>
+            团委老师意见 : 
+            <span class="smallFont">{% if item.secondRemark %}{{item.secondRemark}}{% else %}(未审批){% endif %}</span>
+        </dd>
+        <dd>
+        <a data-href="/student/detail/{{item.id}}/" class="detail">详细信息</a>
+        {% ifequal item.type "nonPublicWelfare" %}
+            <a data-href="#" class="detail status">{{item.get_status_display}}</a>
+        {% else %}
+        {% ifnotequal item.status "success" %}
+             <a data-href="#" class="detail status">{{item.get_status_display}}</a>
+        {% else %}
+            {% if item.isCompleted %}
+            <a data-href="#" class="status detail">已经结束</a>
+            {% else %}
+            {% if item.isReady %}
+            <a data-href="/student/register/{{item.id}}/" class="attendedPeople">参与人员</a>
+            {% else%}
+            <a data-href="/student/screen/{{item.id}}/" class="screenPeople">筛选人员</a>
+            {% endif %}
+            {% endif %}
+        {% endifnotequal %}
+        {% endifequal %}
+        </dd>
+        <div class="clear">
+        </div>
+    </dl>
+    {% empty %}
+        <div class="ifEmpty">
+            当前项还没有活动！
+        </div>
+    {% endfor %}
+    </div>
+</div>
+{% include "footPart.html" %}
+{% endblock %}
+{% block importjs %}
+<script src="/static/js/appliedActivity.js" type="text/javascript"></script>
+{% endblock %}

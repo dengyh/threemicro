@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block titlebar %}{{title}}{% endblock %}
+{% block import %}
+<link rel="stylesheet" type="text/css" href="/static/css/activityDetail.css">
+<link rel="stylesheet" type="text/css" href="/static/css/studentTopBar.css">
+{% endblock %}
+{% block content %}
+{% include "indexPageTop.html" %}
+<div class="middlePart">
+    <div class="titleItem"><h1>活动详情</h1></div>
+
+    <div class="activityItem">
+    	<dt><span>{{title}}</span></dt>
+        <hr class="divider">
+        <dd>
+            <div>
+                <span>时间：</span><span class="smallFont">{{time}}</span>
+                <span class="blank"></span>
+                <span>作者：</span><span class="smallFont">{{authorName}}</span>
+            </div>
+            <hr class="divider">
+            <div>
+                <span class="content smallFont">{{content | safe}}</span>
+            </div>
+        </dd>
+        <div class="clear">
+        <br />
+        </div>
+    </div>
+</div>
+{% include "footPart.html" %}
+{% endblock %}
+{% block importjs %}
+{% endblock %}

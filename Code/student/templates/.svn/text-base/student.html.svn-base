@@ -1,0 +1,63 @@
+{% extends "microbase.html" %}
+
+{% block titlebar %}测试{% endblock %}
+{% block deleteMoble %}{% endblock %}
+
+{% block import %}
+<style>
+    iframe {
+        display: none;
+    }
+</style>
+{% endblock %}
+
+{% block importjs %}
+<script src="/static/tinymce/tinymce.min.js" type="text/javascript"></script>
+{% endblock %}
+
+{% block content %}
+    <iframe name="uploadFrame" id="uploadFrame"></iframe>
+    <form action="/student/upload/" method="post" target="uploadFrame" enctype="multipart/form-data" id="uploadPictures">
+    {% csrf_token %}
+        <input class="form-control" type="file" name="pictures" multiple="multiple"/>
+        <button class="btn btn-info" type="submit">上传图片</button>
+    </form>
+    <p id="uploadMessage"></p>
+    <iframe name="uploadActivity" id="uploadActivity"></iframe>
+    <form enctype="multipart/form-data" method="post" target="uploadActivity" action="/student/create/" id="activityForm">
+    {% csrf_token %}
+        <input type="text" name="title" placeholder="标题">
+        <input type="text" name="location" placeholder="地点">
+        <select name="campus" id="campus">
+            <!-- <option value="south">南校区</option>
+            <option value="east">东校区</option>
+            <option value="north">北校区</option> -->
+            <option value="zhuhai">珠海校区</option>
+        </select>
+        <select name="type">
+            <option value="publicWelfare">公益活动</option>
+            <option value="nonPublicWelfare">非公益活动</option>
+            <option value="classroom">课室申请</option>
+            <option value="chair">桌椅申请</option>
+            <option value="poster">张贴申请</option>
+            <option value="location">校区场地申请</option>
+            <option value="actionCenter">学生活动中心申请</option>
+            <option value="functionRoom">校团委功能室申请</option>
+        </select>
+        <input type="time" name="maxTime" placeholder="最长公益时长">
+        <textarea name="content"></textarea>
+        <input type="text" name="sponsor" placeholder="举办方">
+        <select name="teacher" id="selectTeacher">
+            <option value="none">(先选校区)</option>
+        </select>
+        <input type="number" name="totalNumber" placeholder="最多参与人数">
+        <input type="date" name="deadline" placeholder="报名截止日期">
+        <input type="date" name="startDateTime" placeholder="活动开始时间">
+        <input type="date" name="endDateTime" placeholder="活动结束时间">
+        附件:
+        <button id="attach">添加</button>
+        <button id="reduce">减少</button>
+        <button type="submit" id="submit">提交</button>
+    </form>
+    <p id="activityMessage"></p>
+{% endblock %}

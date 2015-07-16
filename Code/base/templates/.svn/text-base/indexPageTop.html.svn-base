@@ -1,0 +1,33 @@
+<div class="topBack">
+    <div class="container topPart navbar-fixed-top">
+        <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+            <div class="container">
+                <div class="logo">
+                    <img src="/static/images/logo.png">
+                </div>
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <div class="animate"></div>
+                  <a class="navbar-brand navs" data-href="/">首页</a>
+                </div>
+                <nav class="navbar-collapse collapse navigation">
+                  <ul class="nav navbar-nav">
+                    <li class="news"><div class="animate"></div><a data-href="/news/school/" class="navs">新闻资讯</a></li>
+                    <li class="activity"><div class="animate"></div><a data-href="/news/activity/" class="navs">活动资讯</a></li>
+                    {% if user.username %}
+                    <li class="login"><div class="animate"></div><a data-href="/login/" class="navs">{{user.username}}</a></li>
+                    <li class="logout"><div class="animate"></div><a data-href="/logout/" class="navs">登出</a></li>
+                    {% else %}
+                    <li class="login"><div class="animate"></div><a data-href="/login/" class="navs">登录</a></li>
+                    {% endif %}
+                  </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>

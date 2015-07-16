@@ -1,0 +1,27 @@
+{% extends "microbase.html" %}
+{% block titlebar %}新闻资讯{% endblock %}
+{% block content %}
+<div data-role="content" id="trendsDetail">
+    <a href="/news/micro/{{type}}/" class="return"><img src="/static/images/returnBtn.png">活动列表</a>
+    <hr class="divider">
+    <div class="activityItem" id="activity{{item.id}}">
+        <dt>{{title}}</dt>
+        <dd>
+            <div>
+                <span class="grayFont">{{time}}</span>
+                <span class="blank"></span>
+                <span class="grayFont">{{authorName}}</span>
+            </div>
+            <div>
+                <span class="content">{{content | safe}}</span>
+            </div>
+        </dd>
+        <div class="clear">
+            <br />
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block import %}
+<link rel="stylesheet" type="text/css" href="/static/css/microTrendsDetail.css">
+{% endblock %}

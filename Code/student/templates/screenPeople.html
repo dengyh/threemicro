@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block titlebar %}筛选人员{% endblock %}
+{% block import %}
+<link rel="stylesheet" type="text/css" href="/static/css/screenPeople.css">
+<link rel="stylesheet" type="text/css" href="/static/css/studentTopBar.css">
+{% endblock %}
+{% block content %}
+{% include "studentPageTop.html" %}
+<div class="middlePart">
+    <div class="titleItem"><h1>筛选人员</h1></div>
+    <div class="confirm" data-aid="{{activity.id}}"><a data-toggle="modal" data-target="#confirm" type="button" class="btn btn-success">确定</a></div>
+    <div class="machine-selected" data-aid="{{activity.id}}"><a type="button" class="btn btn-warning">机器筛选</a></div>
+    <div class="announcement" data-aid="{{activity.id}}"><a type="button" class="btn btn-primary">通知内容</a></div>
+    <div class="announcementText">
+        <textarea class='form-control' rows='3' placeholder='通知内容'></textarea>
+        <div>
+            <button type="button" class="btn btn-success">确定发送</button>
+        </div>
+    </div>
+    {% for item in registrants %}
+    <dl class="activityItem">
+        <dt class="name">{{item.student.name}}dd</dt>
+        <dt class="num">{{item.student.netid}}</dt>
+        <dt class="num">{{item.student.get_gender_display}}</dt>
+        <dt class="num">{{item.student.phone}}</dt>
+        <dt class="num">{{item.student.grade}} {{item.student.college}}</dt>
+        <div class="chose" data-activityid="{{activity.id}}" data-manid="{{item.id}}" id="registrant{{item.netid}}">
+        {% if item.isSelected %}
+            <a type="button" class="cancel">未选中</a>
+            <a type="button" class="machine">机选</a>
+            <a type="button" class="man selected">人工选择</a>
+        {% else %}
+        {% if item.isMachine %}
+            <a type="button" class="cancel">未选中</a>
+            <a type="button" class="machine selected">机选</a>
+            <a type="button" class="man">人工选择</a>
+        {% else %}
+            <a type="button" class="cancel selected">未选中</a>
+            <a type="button" class="machine">机选</a>
+            <a type="button" class="man">人工选择</a>
+        {% endif %}
+        {% endif %}
+        </div>
+        <div class="clear">
+        </div>
+    </dl>
+    {% endfor %}
+    <div class="clear">
+    </div>
+</div>
+{% include "footPart.html" %}
+{% endblock %}
+{% block importjs %}
+<script src="/static/js/screenPeople.js" type="text/javascript"></script>
+{% endblock %}

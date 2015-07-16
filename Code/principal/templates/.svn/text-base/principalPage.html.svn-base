@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block titlebar %}管理员首页{% endblock %}
+{% block import %}
+<link rel="stylesheet" type="text/css" href="/static/css/principalPage.css">
+{% endblock %}
+{% block content %}
+{% include "principalPageTop.html" %}
+<section class="middlePart">
+	<div class="checkOutApplied">
+        <figure class="effect-marley">
+            <a data-href="/principal/rights/">
+                <img src="/static/images/applyState.jpg" alt="审批">
+                <figcaption>
+                    <h2>权益在线(未审阅)</h2>
+                    <p>你可以通过这里查看还未审阅的权益在线</p>
+                </figcaption>
+            </a>         
+        </figure>
+    </div>     
+    
+</section>
+{% include "footPart.html" %}
+
+{% endblock %}
+{% block importjs %}
+<!-- <script src="/static/js/teacher.js"></script> -->
+{% endblock %}

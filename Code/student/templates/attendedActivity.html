@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block titlebar %}参加过的公益活动{% endblock %}
+{% block import %}
+<link rel="stylesheet" type="text/css" href="/static/css/attendedActivity.css">
+<link rel="stylesheet" type="text/css" href="/static/css/studentTopBar.css">
+{% endblock %}
+{% block content %}
+{% include "studentPageTop.html" %}
+<div class="middlePart">
+    <div class="titleItem"><h1>参加过的公益活动</h1></div>
+    <div class="totalWelfareTime">一学年总公益时长 {{student.totalTime|floatformat:"2"}}H</div>
+    <div class="honor">信誉度 {{student.honour}}</div>
+    {% for item in activities %}
+    <dl class="activityItem">
+        <div class="welfareTime">公益时长 {{item.registrant.time|floatformat:"2"}}H</div>
+        <dt>{{item.title}}</dt>
+        <dd>时间 : {{item.startDateTime}}到{{item.endDateTime}}</dd>
+        <dd>地点 : {{item.location}}</dd>
+        <a data-href="/student/detail/{{item.id}}/"><button class="detail">详细信息</button></a>
+        <div class="clear">
+        </div>
+    </dl>
+    {% empty %}
+        <div class="ifEmpty">
+            当前项还没有活动！
+        </div>
+    {% endfor %}
+</div>
+{% include "footPart.html" %}
+{% endblock %}

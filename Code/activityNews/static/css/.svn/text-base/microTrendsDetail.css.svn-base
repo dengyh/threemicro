@@ -1,0 +1,26 @@
+#trendsDetail dt{
+    font-size: 2rem;
+    font-family: "微软雅黑";
+}
+#trendsDetail dd{
+    font-size: 1.5rem;
+    font-family: "微软雅黑";
+
+}
+.blank{
+    margin-right: 1rem;
+}
+.grayFont{
+    font-size: 80%;
+    color: #ccc;
+    margin: 1rem 0;
+    display: inline-block;
+}
+a.return{
+    color: #11cd6e!important;
+    text-decoration: none;
+    font-size: 1rem;
+}
+.return>img{
+    width: 2rem;
+}

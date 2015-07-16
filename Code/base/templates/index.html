@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block titlebar %}首页{% endblock %}
+{% block import %}
+<link rel="stylesheet" type="text/css" href="/static/css/studentPage.css">
+<link rel="stylesheet" type="text/css" href="/static/css/index.css">
+{% endblock %}
+{% block content %}
+{% include "indexPageTop.html" %}
+
+<div class="middlePart">
+    <div class="activityForcast">
+        <div class="picContain">
+            <a href="/news/school/">
+                <figure class="effect-oscar">
+                    <img src="/static/images/activityForcast.jpg" alt="img08">
+                    <figcaption>
+                        <h2 class="indexTitle">新闻资讯</h2>
+                    </figcaption>           
+                </figure>
+            </a>
+        </div>
+        <div class="content">
+            <div class="indexSonContent">
+                {% for item in newsInfo %}
+                <hr>
+                <span class="indexSonTitle">
+                    <a href="{{item.newsUrl}}">
+                        <span>{{item.newsTitle}}</span>
+                        <span class="gray">{{item.newsTime}}</span>
+                    </a>
+                </span>
+                {% endfor %}
+            </div>
+        </div>
+        <a href="/news/school/" class="indexMoreInfo">
+            更多
+        </a>
+    </div>
+    <div class="qualityActivity">
+        <div class="picContain">
+            <a href="/news/activity/">
+                <figure class="effect-oscar">
+                    <img src="/static/images/qualityActivity.jpg" alt="img08">
+                    <figcaption>
+                        <h2 class="indexTitle">活动资讯</h2>
+                    </figcaption>           
+                </figure>
+            </a>
+        </div>
+        <div class="content">
+            <div class="indexSonContent">
+                {% for item in newsInfo %}
+                <hr>
+                <span class="indexSonTitle">
+                    <a href="{{item.newsUrl}}">
+                        <span>{{item.newsTitle}}</span>
+                        <span class="gray">{{item.newsTime}}</span>
+                    </a>
+                </span>
+                {% endfor %}
+            </div>
+        </div>
+        <a href="/news/activity/" class="indexMoreInfo">
+            更多
+        </a>
+    </div>
+    <div class="clear"></div>
+</div>
+{% include "footPart.html" %}
+{% endblock %}

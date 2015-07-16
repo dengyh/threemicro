@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block titlebar %}活动详情{% endblock %}
+{% block import %}
+<link rel="stylesheet" type="text/css" href="/static/css/activityDetail.css">
+<link rel="stylesheet" type="text/css" href="/static/css/studentTopBar.css">
+{% endblock %}
+{% block content %}
+{% include "principalPageTop.html" %}
+<section class="middlePart">
+    <div class="titleItem"><h1>活动详情</h1></div>
+
+    <dl class="activityItem">
+        <dt>{{activity.title}}</dt>
+        <hr class="divider">
+        <dd>
+            <span class="blank">
+                负责人 : 
+                <span class="smallFont">{{activity.sponsor}}</span>
+            </span>
+            <span class="blank">
+                校区 : 
+                <span class="smallFont">{{activity.get_campus_display}}</span>
+            </span>
+            <span class="blank">
+                时间 : 
+                <span class="smallFont">{{activity.startDateTime}}--{{activity.endDateTime}}</span>
+            </span>
+            <span class="blank">
+                联系方式 : 
+                <span class="smallFont">{{activity.}}</span>
+            </span>
+            <hr class="divider">
+            <p class="content smallFont">{{activity.content | safe}}</p>
+            <span class="blank">
+                公益时长 : 
+                <span class="smallFont">{{activity.maxTime|floatformat:"2"}}h</span>
+            </span>
+            <span class="blank">
+                地点 : 
+                <span class="smallFont">{{activity.location}}</span>
+            </span>
+            <span class="blank">
+                总人数 : 
+                <span class="smallFont">{{activity.totalNumber}}</span>
+            </span>
+            <span class="blank">
+                报名截止时间 : 
+                <span class="smallFont">{{activity.deadline}}</span>
+            </span>
+        </dd>
+        <div class="clear">
+        <br />
+        </div>
+    </dl>
+</section>
+{% include "footPart.html" %}
+{% endblock %}
+{% block importjs %}
+{% endblock %}
