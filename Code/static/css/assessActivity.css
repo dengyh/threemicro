@@ -1,0 +1,78 @@
+.operation{
+	overflow: hidden;
+	margin-top: 36px;
+	margin-bottom: 24px;
+	margin-left: 24px;
+}
+.activityItem{
+	background-image: url("/static/images/background_3.jpg");
+	margin: 0;
+	padding: 0;
+	font-size: 18px;
+	width: 30%;
+	float: left;
+	margin-left: 2.5%;
+	margin-bottom: 20px;
+	min-height: 320px;
+}
+.itemBox{
+	background-color: rgba(248, 248, 231, 0.79);
+	padding: 12px;
+}
+.activityItem .pass,.activityItem .unpass{
+	width: 48px;
+	height: 30px;
+	float: left;
+	margin: 0;
+	margin-left: 4.8px;
+	margin-top: 6px;
+}
+.activityItem .pass{
+	background-color: #6bb070;
+}
+.activityItem .unpass{
+	background-color: #F20E39;
+}
+.activityItem .tdetail{
+	background-color: transparent;
+	padding-top: 0;
+	border: none;
+	float: right;
+	margin-right: 12px;
+	cursor: pointer;
+}
+/*.activityItem .pass img,.activityItem .unpass img{
+	width: 70%;
+}*/
+.tdetail span{
+	display: inline-block;
+	font-size: 16px;
+	font-weight: 700;
+	color: rgb(146, 97, 8);
+}
+.activityItem .tdetail img{
+	width: 42px;
+}
+dt, dd{
+	color: #916108!important;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	width: 100%;
+}
+
+.input-group .form-control {
+	border-radius: 5px!important;
+}
+
+.input-group .form-mid {
+	font-size: 24px;
+}
+.row {
+	margin-left: 5px;
+	padding: 10px 0;
+}
+.pagination-box {
+	margin-left: 2.5%;
+	margin-top: 10px;
+}

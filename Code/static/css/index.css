@@ -1,0 +1,67 @@
+.navbar-collapse ul li {
+    margin-left: 36px;
+}
+figure{
+    border-radius: 0px!important;
+}
+figure img{
+    border-radius: 0px!important;
+}
+figcaption {
+    border-radius: 0px!important;
+}
+
+.middlePart, .middlePart > div, .middlePart > div > div{
+	overflow: hidden;
+	text-align: center;
+}
+.middlePart a{
+	text-decoration: none;
+}
+.topLeft{
+	/*background-color: white;*/
+	float: left;
+	width: 50%;
+}
+.upcomingEventsTitle > span, .newsInformationTitle > span,
+.announcementTitle > span, .rightsTitle > span{
+	float: left;
+	font-size: 24px;
+	height: 34px;
+	display: block;
+	margin-right: 10px;
+}
+.upcomingEventsTitle > select{
+	width: 50%;
+	float: left;
+}
+.upcomingEventsContent, .newsInformationContent{
+	margin: 20px auto;
+}
+.upcomingEventsContent > div{
+	width: 33%;
+	float: left;
+	border: 1px solid #eee;
+}
+.content > span{
+	display: block;
+	font-size: 19px;
+	margin: 5px 0;
+}
+.topRight{
+	float: left;
+	width: 50%;
+}
+.newsInformationContent{
+	width: 80%;
+	float: left;
+}
+.bottomOne{
+	float: left;
+	width: 90%;
+}
+.bottomTwo{
+	float: left;
+	width: 90%;
+	margin: 20px 0;
+}

@@ -1,0 +1,26 @@
+.name{
+    float: left;
+    padding: 1.5rem 2rem;
+    font-size: 2rem;
+    font-weight: 700;
+}
+.num{
+    float: left;
+    padding: 1.5rem 2rem;
+    font-size: 2rem;
+    font-weight: 700;
+}
+.content{
+    padding: 1.5rem 2rem;
+    font-size: 2rem;
+}
+.content span{
+    display: block;
+}
+.content .contact {
+    float: right;
+}
+.remark textarea{
+    width: 100%;
+    margin: 1rem 0;
+}

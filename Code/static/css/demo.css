@@ -1,0 +1,44 @@
+
+
+*, *:after, *:before { border-box; box-sizing: border-box; }
+.clearfix:before, .clearfix:after { content: ''; display: table; }
+.clearfix:after { clear: both; }
+
+figure a {
+    color: white;
+    text-decoration: none;
+    outline: none;
+}
+
+figure a:hover,figure a:focus {
+    color: white;
+}
+
+figure{
+    position: relative;
+    border-radius: 20px;
+    width: 100%;
+    overflow: hidden;
+}
+figure img{
+    float: left;
+    border-radius: 20px;
+}
+figcaption {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.checkOutApplied,.checkOutSigned{
+    width: 44%;
+    margin-right: 3%;
+    display: inline-block;
+}
+.checkOutApplied img,.checkOutSigned img{
+    width: 100%;
+}
+.checkOutApplied h2,.checkOutSigned h2{
+    font-weight: 700;
+}
