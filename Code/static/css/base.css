@@ -1,0 +1,461 @@
+html,body,div,span,h1,a{
+    font-family: "微软雅黑";
+}
+html {
+    min-height: 100%;
+    width: 100%;
+    font-size: 50%!important;
+}
+body{
+    background-image: url("/static/images/textureBack.jpg");
+    background-repeat: repeat;
+    min-height: 100%;
+    min-width: 1000px;
+    width: 100%;
+    position: absolute;
+}
+h1{
+    font-size: 27.72px;
+}
+a:hover{
+    text-shadow: 3px 3px 8px black;
+}
+a{
+    cursor: pointer;
+}
+.activityItem{
+    border-top: 1px solid gainsboro;
+    border-bottom: 1px solid gainsboro;
+    border-left: 10px solid #5cb85c;
+    background-color: white;
+    *background: white;
+    background\0: white;
+    margin: 10px auto;
+    padding: 12px 48px;
+    border-radius: 10px;
+}
+.activityItem a{
+    text-decoration: none;
+}
+
+/*详情按钮*/
+.detail{
+    text-align: center;
+    padding: 3.6px 30px;
+    background-color: #5cb85c;
+    *background: #5cb85c;
+    background\0: #5cb85c;
+    color: white;
+    font-weight: 700;
+
+    float: right;
+    border-radius: 10px ;
+    font-size: 16px;
+    box-shadow: none;
+    border: 1px solid white;
+}
+.detail:hover{
+    background-color: white;
+    *background: white;
+    background\0: white;
+    color: #5cb85c;
+    border: 1px solid #5cb85c;
+}
+/*模态框*/
+.modal-dialog{
+    margin-bottom:  0;
+    border-radius: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 auto;
+}
+.modal-dialog div{
+    overflow: hidden;
+}
+.modal-dialog form, #change-password{
+    margin-bottom: 48px;
+}
+.modal-dialog label, .modal-dialog input{
+    float: left;
+}
+.modal-content{
+    width: 480px;
+    margin: 0 60px;
+    box-shadow: none;
+    border-radius: 10px;
+    text-align: center;
+}
+.modal-content label{
+    display: block;
+    width: 180px;
+    margin: 0 auto;
+}
+.modal-content input{
+    border: 1px solid #9ede5a;
+    width: 180px;
+    margin: 0 6px;
+}
+.modal-content .modify {
+    width: 96px;
+}
+.vertical{
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/*学生*/
+.closeBtn{
+    overflow: hidden;
+    padding: 12px;
+}
+.closeBtn span{
+    font-size: 24px;
+    color: red;
+}
+
+/*学生，老师部分*/
+#modifyMes select, #modifyTeacherMes select, #modifyTuanWeiMes select, #modifyGuanLiMes select{
+    margin-left: 6px;
+    float: left;
+}
+#change-password label, #modifyMes label, #modifyTeacherMes label,
+#modifyTuanWeiMes label, #modifyGuanLiMes label{
+    float: left;
+    text-align: right;
+    font-size: 16px;
+    margin-right: 6px;
+}
+#modifyMes, #modifyPassword, #alert, #modifyTeacherMes, #modifyTuanWeiMes{
+    text-align: center;
+}
+
+/*顶栏*/
+.topBack{
+    background-image: url(/static/images/studentBackground_2.jpg);
+    height: 100px;
+    background-size: cover;
+    background-repeat: no-repeat-x;
+    background-repeat: no-repeat-y;
+}
+.navbar-inverse{
+    background-color: transparent;
+    *background: transparent;
+    background\0: transparent;
+    margin-bottom: 0;
+    border: none;
+    padding: 10px 0;
+}
+.navbar-header,.navbar-nav{
+    margin-top: 20px;
+}
+.clear{
+    clear: both;
+}
+.container{
+    width: 100%;
+    padding: 0 10%;
+    padding-right: 0;
+}
+.topPart{
+    background-color: rgba(71, 164, 71, 0.51);
+    *background: rgb(71, 164, 71);
+    background\0: rgb(71, 164, 71);
+    *filter:alpha(opacity=80); 
+    filter\0:alpha(opacity=80); 
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    margin: 0 auto;
+}
+.navbar-inverse .navbar-nav>li>a,.navbar-inverse .navbar-brand{
+    color: white;
+}
+.topPart li:hover{
+    z-index: 1;
+}
+.navbar-header a:hover{
+    /*background-color: rgba(255, 255, 255, 0.52)!important;*/
+    color: white!important;
+    z-index: 1;
+}
+.navbar-inverse .navbar-nav>.open>a{
+    background-color: rgba(255, 255, 255, 0.39)!important;
+    *background: rgb(255, 255, 255);
+    background\0: rgb(255, 255, 255);
+    *filter:alpha(opacity=39); 
+    filter\0:alpha(opacity=39);
+    text-shadow: 3px 3px 8px black;
+}
+.navbar>.container .navbar-brand{
+    margin-left: 0;
+}
+.topPart a{
+    padding: 15px 30px!important;
+    font-size: 12px;
+}
+.dropItem ul{
+    padding: 0;
+    background-color: #47a447;
+    *background: rgb(71, 164, 71);
+    background\0: rgb(71, 164, 71);
+}
+.dropItem ul li{
+    padding: 6px;
+}
+.dropItem ul a:hover{
+    background-color: rgba(255, 255, 255, 0.39);
+    *filter:alpha(opacity=39); 
+    filter\0:alpha(opacity=39);
+    color: white;
+}
+.gap{
+    width: 6px;
+}
+.logo{
+    float: left;
+}
+.logo > img{
+    height: 80px;
+}
+.middlePart{
+    margin: 0 auto;
+    margin: 0 10%;
+    width: 80%;
+    padding: 30px 0px 180px 0;
+}
+/*底栏*/
+.footPart{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #47a447;
+    padding: 1% 10%;
+    *width: 80%; 
+    width: \0: 80%;
+    height: 100px;
+    color: white;
+    clear: both;
+}
+.footPart .baseInfo{
+    float: left;
+    margin-bottom: 0;
+}
+.footPart .baseInfo a{
+    /*margin-right: 1%;*/
+    text-decoration: none;
+    color: rgb(1, 75, 24);
+}
+.footPart .baseImage{
+    box-shadow: 3px 3px 8px black;
+    margin: 10px 0;
+    margin-top: -70px;
+    float: right;
+    width: 120px;
+}
+.footPart .baseImageDes{
+    float: right;
+    background: rgba(255, 255, 255, 0.37);
+    padding: 10px;
+    margin-top: -35px;
+    color: black;
+}
+/*确定按钮*/
+#confirm{
+    text-align: center;
+}
+
+/*alert窗口*/
+#alert{
+    z-index: 20000;
+}
+
+#alert .modal-content{
+    width: 360px;
+    margin: 0 auto;
+    text-align: center;
+}
+.alert{
+    display: none;
+}
+
+/*请稍候*/
+.wait{
+    background-color: white;
+    *background: white;
+    background\0: white;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 10000;
+    display: none;
+    overflow: hidden;
+}
+.waitContainer,.waitContent,.loaderItem{
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  margin: -22px 0 0 -22px;
+  top: 50%;
+  left: 50%;
+}
+.waitContent{
+   margin: 22px -22px;
+}
+.loaderItem{
+  text-align: center;
+  background: white;
+  *background: white;
+    background\0: white;
+  border-left: 4px solid;
+  border-right: 4px solid;
+  border-top: 4px solid;
+  border-bottom: 3px solid transparent !important;
+  border-radius: 22px;
+  border-color: #47a447 !important;
+}
+.whiteBlock{
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  margin: -22px 0 0 -22px;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  background: white;
+}
+.sex, .grade{
+    width: 180px;
+}
+
+/*分割线*/
+.divider{
+    border: 1px solid #ddd;
+}
+
+/*详情内容展示*/
+.blank{
+    margin-right: 36px;
+}
+.content{
+    display: inline-block;
+    width: 100%;
+    /*overflow:hidden;
+    white-space:nowrap;*/
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+
+}
+.smallFont{
+    font-size: 12.67px;
+}
+dt{
+    color: rgb(29, 128, 38);
+    font-size: 21px;
+    padding: 8px 0;
+    font-weight: 400;
+}
+dd{
+    color: rgb(29, 128, 38);
+    font-size: 16px;
+}
+
+/*无内容时提示*/
+.ifEmpty{
+    border-left: 10px solid #d9534f;
+    border-radius: 10px;
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    border-top: 1px solid #eee;
+    padding: 24px;
+    font-size: 16px;
+    margin: 12px 0;
+    background-color: white;
+}
+.necessary{
+    color: rgb(217,83,79);
+}
+.unnecessary{
+    color: #f0ad4e;
+}
+.gray{
+    color: #969696;
+    font-size: 80%;
+}
+
+/*首页栏目展示*/
+.indexSonContent{
+    padding: 0 12px;
+    text-align: left;
+}
+.indexSonContent hr{
+    margin: 0;
+    padding: 0;
+}
+.indexTitle{
+    display: block;
+    font-size: 24px;
+    padding: 12px 0;
+    color: white;
+}
+.indexSonTitle{
+    display: block;
+    padding: 12px 0;
+}
+.indexMoreInfo{
+    width: 100%;
+    display: block;
+    padding: 6px 0;
+    background-color: #91bc66;
+    font-size: 16px;
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+}
+/*表格条目高亮*/
+tr:hover{
+    filter:alpha(opacity=50);
+    -moz-opacity:0.5;
+    opacity:0.5;
+    background-color: white;
+    color: black;
+}
+/*详情tag样式*/
+.tag{
+    border: 2px solid #f0ad4e;
+}
+/*标签*/
+.labels{
+    background-color: rgb(29, 128, 38);
+    color: white;
+    font-size: 15px;
+    font-weight: 400;
+    padding: 3px 7px;
+    border-radius: 5px;
+    display: inline;
+    margin: 5px 0;
+}
+.labelArrow{
+    width:0;
+    height:0;
+    border:7px solid transparent; 
+    border-left-color:rgb(29, 128, 38);
+    border-right:0;
+    display: inline-block;
+    margin-top: 2px;
+}
+.littleModule{
+    margin: 10px 0;
+    font-size: 12.67px;
+    color: gray;
+}
+
+/*搜索框*/
+.searchBox{
+    z-index: 100;
+    margin-left: 2.5%;
+    padding: 20px 0;
+    margin-left: 5px;
+    width: 100%;
+    /*margin-left: -100px;*/
+}

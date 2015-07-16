@@ -1,0 +1,8 @@
+body{
+    background: url("/static/images/background_1.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+}
+h1{
+    margin:5rem 0;
+}

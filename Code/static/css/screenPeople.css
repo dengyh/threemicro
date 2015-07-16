@@ -1,0 +1,69 @@
+.name{
+    float: left;
+    padding: 18px 24px;
+    font-size: 16px;
+}
+.num{
+    float: left;
+    padding: 18px 24px;
+    font-size: 16px;
+}
+.middlePart a{
+    text-decoration: none;
+    cursor: pointer;
+}
+.middlePart a:hover{
+    color: white;
+}
+.confirm {
+    display: inline-block;
+    margin-right: 5%;
+}
+.confirm a{
+    padding: 7px 20px;
+}
+
+.machine-selected {
+    display: inline-block;
+}
+.machine-selected a{
+    padding: 7px 20px;
+}
+.announcement{
+    display: inline-block;
+    float: right;
+}
+.announcementText{
+    display: none;
+}
+.announcementText textarea{
+    margin-top: 2%;
+    width: 100%; 
+}
+.announcementText button{
+    margin-top: 2%;
+}
+.chose a {
+    float: right;
+    cursor: pointer;
+    width: 120px;
+    background-color: #417705;
+    display: block;
+    font-size: 16px;
+    color: black;
+    text-align: center;
+    padding: 6px 0;
+    margin-right: 12px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    border-radius: 5px;
+}
+
+.chose .machine {
+    pointer-events: none;
+    cursor: default;
+}
+
+.selected {
+    color: white!important;
+}

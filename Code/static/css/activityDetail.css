@@ -1,0 +1,37 @@
+#cancelSigning,#signUp{
+	float: right;
+	margin: 12px;
+	background-color: transparent;
+	border: none;
+	width: 120px;
+	padding: 4.8px 0;
+	border-radius: 10px;
+	border: 2px solid #417705;
+	font-weight: 700;
+	font-size: 16px;
+}
+#cancelSigning:hover,#signUp:hover{
+	border: 2px solid white;
+	background-color: #417705;
+	color: white;
+}
+.table>thead>tr>th,
+.table>tbody>tr>th,
+.table>tfoot>tr>th {
+	border: none;
+}
+.table {
+	font-size: 16px;
+	margin-top: 10px;
+}
+dt>button{
+	float: right;
+}
+.modifyActivity{
+	display: none;
+	background-color: white;
+	border-left: 10px solid #5cb85c;
+	margin: 12px auto;
+	padding: 12px 48px;
+	border-radius: 10px;
+}

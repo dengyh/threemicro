@@ -1,0 +1,32 @@
+/*顶栏共同CSS代码*/
+body{
+    background-color: #ebebeb;
+}
+/*顶栏到这里结束*/
+.screenPeople,.attendedPeople{
+    text-align: center;
+    padding: 3.6px 40px;
+    background-color: #5cb85c;
+    color: white;
+    font-weight: 700;
+    float: right;
+    border-radius: 10px ;
+    font-size: 16px;
+    box-shadow: none;
+    border: 1px solid white;
+}
+.screenPeople:hover,.attendedPeople:hover{
+    background-color: white;
+    color: #5cb85c;
+    border: 1px solid #5cb85c;
+}
+.titleItem h1{
+    margin: 3% 0;
+    font-weight: 700;
+    padding-bottom: 6px;
+    border-bottom: 5px solid #6bb070;
+}
+.status {
+    pointer-events: none;
+    cursor: default;
+}

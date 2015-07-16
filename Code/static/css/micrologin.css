@@ -1,0 +1,70 @@
+body{
+	background: url("/static/images/background_1.jpg");
+	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+}
+.loginBox{
+	margin-top: 3rem;
+	margin-left: 2rem;
+	margin-right: 2rem;
+	box-shadow: 1px 1px 5px 3px #79995d;
+}
+.loginTopImage,.loginTopImage img{
+	width: 100%;
+}
+.loginForm{
+	font-family: "微软雅黑";
+	background-color: white;
+	padding-top: 2rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+.netID,.password{
+	background-color: white;
+	overflow: hidden;
+	padding-left: 5%;
+	padding-right: 5%;
+}
+.netID img{
+	width: 2rem;
+	float: left;
+	margin-top: 1.2em;
+	margin-left: 1rem;
+	margin-bottom: 0.4em;
+}
+.password img{
+	width: 1rem;
+	float: left;
+	margin-top: 1.2em;
+	margin-bottom: 0.4em;
+	margin-left: 1.5rem;
+	margin-right: 0.5rem;
+}	
+.ui-input-text{
+	background-color: transparent;
+	border: none;
+	margin-left: 0.5rem;
+	padding-top: 0.1rem;
+	padding-bottom: 0.1rem;
+}
+.ui-corner-all{
+	border-radius: 10px 10px 10px 10px;
+}
+.ui-input-text input{
+	width: 80%;
+	height: 3rem;
+}
+#loginBtn{
+	padding-left: 25%;
+	padding-right: 25%;
+	padding-bottom: 1rem;
+}
+#loginBtn button{
+	background-color: rgb(199,235,131)!important;
+	color: white;
+	height: 4rem;
+	padding: 0rem;
+}
+#loginBtn button:hover{
+	box-shadow: -3px 5px 15px -2px gray;
+}
