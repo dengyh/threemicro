@@ -1,0 +1,54 @@
+body{
+    background-image: url("/static/images/background_1.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+#pageone{
+    background-color: rgba(255, 255, 255, 0.35);
+}
+#latestHeader{
+    background-color: transparent;
+    border-color: #a7ca7d;
+}
+#latestHeader h1{
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    font-size: 1.9rem;
+    color: white;
+}
+.activityItem{
+    border-bottom: 1px solid #dadada;
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
+}
+dt{
+    margin-bottom: 0.8rem;
+    font-size: 1.5rem;
+    color: #727574;
+}
+dd{
+    margin-left: 2rem;
+    font-size: 1rem;
+    color: #b1b1b2;
+    line-height: 1.9; 
+}
+#detail{
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    border-color: #b8ea86;
+    border-width: 2px;
+    color: #f6a924;
+    margin-top: 0.3rem;
+    margin-left: 70%;
+    width: 30%;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    border-radius: 10px 10px 10px 10px;
+    font-size: 1rem;
+}
+#detail:hover{
+    background-color: #365715;
+    color: white;
+}

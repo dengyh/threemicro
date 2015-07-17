@@ -1,0 +1,90 @@
+{% extends "microbase.html" %}
+{% block titlebar %}审批活动{% endblock %}
+{% block import %}
+<link rel="stylesheet" type="text/css" href="/static/css/microAssessActivity.css">
+{% endblock %}
+{% block content %}
+<div data-role="header" id="latestHeader">
+    <div class="waitToAssess assess">
+        <a name="waitToAssess">等待批阅</a>
+    </div>
+    <div class="assess passAssess">
+        <a name="passAssess">通过批阅</a>
+    </div>
+    <div class="assess personAssess">
+        <a name="personAssess">个人通过批阅</a>
+    </div>
+</div>
+<div data-role="content">
+    <div class="activityItem">
+        <div data-role="collapsible-set" class="personAssessList">
+          <div data-role="collapsible">
+            <h3>预审批活动</h3>
+            {% for item in halfPass %}
+            <dl class="itemBox" data-name="personAssess" id="activity{{item.id}}">
+                <dd>名称 : {{item.title}}</dd>
+                <dd>开始时间 : {{item.startDateTime|date:"Y-m-d"}} {{item.startDateTime|time:"H:i"}}</dd>
+                <dd>结束时间 : {{item.endDateTime|date:"Y-m-d"}} {{item.endDateTime|time:"H:i"}}</dd>
+                <dd>申请时间 : {{item.signDateTime|date:"Y-m-d"}} {{item.signDateTime | time:"H:i"}}</dd>
+                <dd>地点 : {{item.location}}</dd>
+                <dd class="operation">
+                    <a class="detail" href="/activity/tdetail/{{item.id}}/"><span>详情</span><span class="img"><img src="/static/images/detail.png"></span></a>
+                </dd>
+            </dl>
+            {% empty %}
+            <p class='itemBox mesalert' data-name='personAssess'>当前没有预审批的活动！</p>
+            {% endfor %}
+          </div>
+          <div data-role="collapsible">
+            <h3>个人通过活动</h3>
+            {% for item in examined %}
+            <dl class="itemBox" data-name="personAssess" id="activity{{item.id}}">
+                <dd>名称 : {{item.title}}</dd>
+                <dd>开始时间 : {{item.startDateTime|date:"Y-m-d"}} {{item.startDateTime|time:"H:i"}}</dd>
+                <dd>结束时间 : {{item.endDateTime|date:"Y-m-d"}} {{item.endDateTime|time:"H:i"}}</dd>
+                <dd>申请时间 : {{item.signDateTime|date:"Y-m-d"}} {{item.signDateTime | time:"H:i"}}</dd>
+                <dd>地点 : {{item.location}}</dd>
+                <dd class="operation">
+                    <a class="detail" href="/activity/tdetail/{{item.id}}/"><span>详情</span><span class="img"><img src="/static/images/detail.png"></span></a>
+                </dd>
+            </dl>
+            {% empty %}
+            <p class='itemBox mesalert' data-name='waitToAssess'>当前没有个人通过的活动！</p>
+            {% endfor %}  
+          </div>
+        </div>
+        {% for item in examining %}
+        <dl class="itemBox" data-name="waitToAssess" id="activity{{item.id}}">
+            <dd>名称 : {{item.title}}</dd>
+            <dd>开始时间 : {{item.startDateTime|date:"Y-m-d"}} {{item.startDateTime|time:"H:i"}}</dd>
+            <dd>结束时间 : {{item.endDateTime|date:"Y-m-d"}} {{item.endDateTime|time:"H:i"}}</dd>
+            <dd>申请时间 : {{item.signDateTime|date:"Y-m-d"}} {{item.signDateTime | time:"H:i"}}</dd>
+            <dd>地点 : {{item.location}}</dd>
+            <dd class="operation">
+                <a class="detail" href="/activity/tdetail/{{item.id}}/"><span>详情</span><span class="img"><img src="/static/images/detail.png"></span></a>
+            </dd>
+        </dl>
+        {% empty %}
+        <p class='itemBox mesalert' data-name='waitToAssess'>当前已经没有等待批阅的活动了哟！</p>
+        {% endfor %}
+        {% for item in running %}
+        <dl class="itemBox" data-name="passAssess" id="activity{{item.id}}">
+            <dd>名称 : {{item.title}}</dd>
+            <dd>开始时间 : {{item.startDateTime|date:"Y-m-d"}} {{item.startDateTime|time:"H:i"}}</dd>
+            <dd>结束时间 : {{item.endDateTime|date:"Y-m-d"}} {{item.endDateTime|time:"H:i"}}</dd>
+            <dd>申请时间 : {{item.signDateTime|date:"Y-m-d"}} {{item.signDateTime | time:"H:i"}}</dd>
+            <dd>地点 : {{item.location}}</dd>
+            <dd class="operation">
+                <a class="detail" href="/activity/tdetail/{{item.id}}/"><span>详情</span><span class="img"><img src="/static/images/detail.png"></span></a>
+            </dd>
+        </dl>
+        {% empty %}
+        <p class='itemBox mesalert' data-name='passAssess'>当前还没有通过批阅的活动了哟！</p>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
+{% block importjs %}
+<script src="/static/js/microAssessActivity.js"></script>
+{% endblock %}

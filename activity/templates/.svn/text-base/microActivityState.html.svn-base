@@ -1,0 +1,30 @@
+{% extends "microbase.html" %}
+{% block titlebar %}活动申请状态{% endblock %}
+{% block import %}
+<link rel="stylesheet" type="text/css" href="/static/css/microActivityState.css">
+{% endblock %}
+{% block content %}
+<div data-role="content" >
+    <div class="activityItem">
+        {% for item in activities %}
+        <dl class="itemBox">
+            <dd>名称 : {{item.title}}</dd>
+            <dd>开始时间 : {{item.startDateTime|date:"Y-m-d"}} {{item.startDateTime|time:"H:i"}}</dd>
+            <dd>结束时间 : {{item.endDateTime|date:"Y-m-d"}} {{item.endDateTime|time:"H:i"}}</dd>
+            <dd>地点 : {{item.location}}</dd>
+            <dd>负责人 : {{item.student.name}}</dd>
+            <dd>业务指导老师意见 : <span class="smallFont">{% if item.firstRemark %}{{item.firstRemark}}{% else %}(未审批){% endif %}</span></dd>
+            <dd>团委老师意见 : <span class="smallFont">{% if item.secondRemark %}{{item.secondRemark}}{% else %}(未审批){% endif %}</span></dd>
+            <dd class="state" data-name="state">
+                <span class="">{{item.get_status_display}}</span>
+            </dd>
+        </dl>
+        {% empty %}
+            <p class="alert">当前没有申请的活动</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+{% block importjs %}
+<script src="/static/js/microActivityState.js"></script>
+{% endblock %}
