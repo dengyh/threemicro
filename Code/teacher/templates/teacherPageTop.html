@@ -1,0 +1,130 @@
+<div class="topBack">
+    <div class="container topPart navbar-fixed-top">
+        <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+            <div class="container">
+                <div class="logo">
+                    <img src="/static/images/logo.png">
+                </div>
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <!-- <div class="animate"></div> -->
+                  <a class="navbar-brand navs" data-href="/{{user.first_name}}/">首页</a>
+                </div>
+                <nav class="navbar-collapse collapse navigation">
+                  <ul class="nav navbar-nav">
+                    <li class="signUp">
+                        <!-- <div class="animate"></div> -->
+                        <a data-href="/{{user.first_name}}/assess/" class="navs">活动审批</a>
+                    </li>
+                    {% ifequal type "committee" %}
+                    <li class="checkOut">
+                        <!-- <div class="animate"></div> -->
+                        <a data-href="/{{user.first_name}}/checkout/" class="navs">查看活动</a>
+                    </li>
+                    {% endifequal %}
+                    <li class="dropdown dropItem ">
+                      <!-- <div class="animate"></div> -->
+                      <a class="dropdown-toggle navs" data-toggle="dropdown">通过活动 <span class="caret"></span></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a data-href="/{{user.first_name}}/withdraw/">个人审批活动</a></li>
+                        <li><a data-href="/{{user.first_name}}/half/">预审批活动</a></li>
+                      </ul>
+                    </li>
+                    {% ifequal type "committee" %}
+                    <li class="dropdown dropItem ">
+                        <!-- <div class="animate"></div> -->
+                        <a class="dropdown-toggle navs" data-toggle="dropdown">老师/社团/资源<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li class="deleteAdd"><a data-href="/{{user.first_name}}/create/teacher/" >增删业务老师</a></li>
+                            <li><a data-href="/xadmin/" target="_blank">后台管理</a></li>
+                            <li><a data-href="/committee/resource/" target="_blank">资源管理</a></li>
+                        </ul>
+                    </li>
+                    {% endifequal %}
+                    <li class="modifyMessage" data-toggle="modal" data-target="#modifyPassword"><!-- <div class="animate"></div> --><a class="navs">修改密码</a></li>
+                    <li class="modifyMessage" data-toggle="modal" {% ifequal type "teacher" %}data-target="#modifyTeacherMes"{% else %}data-target="#modifyTuanWeiMes"{% endifequal %}><!-- <div class="animate"></div> --><a class="navs">修改个人信息</a></li>
+                    <li class="login"><!-- <div class="animate"></div> --><a data-href="/logout/" class="navs">退出</a></li>
+                  </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 修改个人资料.老师 -->
+    <div class="modal fade" id="modifyTeacherMes" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="closeBtn">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                </div>
+                <form role="form" action="/student/change/" method="post" id="teacherChange">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">姓名</label>
+                        <input type="text" class="form-control" name="name" {% if name %}value="{{name}}"{% endif %} placeholder="姓名">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">性别</label>
+                        <select name="gender" class="form-control sex" data-value="{{gender}}">
+                            <option value="male">男</option>
+                            <option value="female">女</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">工作单位</label>
+                        <input type="text" class="form-control" name="work" {% if work %}value="{{work}}"{% endif %} placeholder="工作单位">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">工资号</label>
+                        <input type="text" class="form-control" name="wageNumber" {% if wageNumber %}value="{{wageNumber}}"{% endif %} placeholder="工资号">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">联系电话</label>
+                        <input type="text" class="form-control" name="phone" {% if phone %}value="{{phone}}"{% endif %} placeholder="请输入长号">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">邮箱</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" name="email" {% if email %}value="{{email}}"{% endif %} placeholder="邮箱">
+                    </div>
+                    <button type="submit" class="btn btn-success modify">修改</button>
+                </form>
+            </div>
+        </div>
+        <div class="vertical"><!-- vertical-comment --></div>
+    </div>
+    <!-- 修改个人资料.团委 -->
+    <div class="modal fade" id="modifyTuanWeiMes" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="closeBtn">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                </div>
+                <form role="form" action="/student/change/" method="post" id="tuanWeiChange">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">姓名</label>
+                        <input type="text" class="form-control" name="name" {% if name %}value="{{name}}"{% endif %} placeholder="姓名">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">工资号</label>
+                        <input type="text" class="form-control" name="wageNumber" {% if wageNumber %}value="{{salaryNum}}"{% endif %} placeholder="工资号">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">联系电话</label>
+                        <input type="text" class="form-control" name="phone" {% if phone %}value="{{phone}}"{% endif %} placeholder="请输入长号">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">邮箱</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" name="email" {% if email %}value="{{email}}"{% endif %} placeholder="邮箱">
+                    </div>
+                    <button type="submit" class="btn btn-success modify">修改</button>
+                </form>
+            </div>
+        </div>
+        <div class="vertical"><!-- vertical-comment --></div>
+    </div>

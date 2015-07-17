@@ -1,0 +1,44 @@
+.download{
+	border: 2px solid white;
+	margin: 12px 0;
+}
+.operation{
+	overflow: hidden;
+	margin-bottom: 12px;
+}
+.activityItem .pass,.activityItem .unpass{
+	width: 48px;
+	float: left;
+	margin-left: 4.8px;
+	padding: 2.4px 4.8px;
+	border: none;
+}
+.activityItem .pass img, .activityItem .unpass img{
+	width: 73%;
+}
+.halfPass{
+	margin-left: 6px;
+}
+.download img{
+	width: 5%;
+}
+#remark{
+	width: 80%;
+	height: 240px;
+	margin-bottom: 24px;
+}
+.table>thead>tr>th,
+.table>tbody>tr>th,
+.table>tfoot>tr>th {
+	border: none;
+}
+.table {
+	font-size: 16px;
+	margin-top: 10px;
+}
+.rejectedBox{
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+}

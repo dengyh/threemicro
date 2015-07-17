@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/ThreeMicro/!svn/ver/356/Code/teacher/templates
+END
+selfPassActivity.html
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/ThreeMicro/!svn/ver/311/Code/teacher/templates/selfPassActivity.html
+END
+assessActivity.html
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/ThreeMicro/!svn/ver/311/Code/teacher/templates/assessActivity.html
+END
+halfPassActivity.html
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/ThreeMicro/!svn/ver/311/Code/teacher/templates/halfPassActivity.html
+END
+label.html
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/ThreeMicro/!svn/ver/318/Code/teacher/templates/label.html
+END
+resourceManage.html
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/ThreeMicro/!svn/ver/351/Code/teacher/templates/resourceManage.html
+END
+checkOutActivity.html
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/ThreeMicro/!svn/ver/320/Code/teacher/templates/checkOutActivity.html
+END
+tActivityDetail.html
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/ThreeMicro/!svn/ver/355/Code/teacher/templates/tActivityDetail.html
+END
+deleteAddTeacher.html
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/ThreeMicro/!svn/ver/311/Code/teacher/templates/deleteAddTeacher.html
+END
+teacherPage.html
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/ThreeMicro/!svn/ver/292/Code/teacher/templates/teacherPage.html
+END
+moreApply.html
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/ThreeMicro/!svn/ver/356/Code/teacher/templates/moreApply.html
+END
+resourceDetail.html
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/ThreeMicro/!svn/ver/356/Code/teacher/templates/resourceDetail.html
+END
+teacherPageTop.html
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/ThreeMicro/!svn/ver/356/Code/teacher/templates/teacherPageTop.html
+END

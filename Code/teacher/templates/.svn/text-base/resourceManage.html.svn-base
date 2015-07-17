@@ -1,0 +1,236 @@
+{% extends "base.html" %}
+{% block titlebar %}资源管理{% endblock %}
+{% block import %}
+<link rel="stylesheet" type="text/css" href="/static/css/resourceManage.css">
+<link rel="stylesheet" type="text/css" href="/static/css/studentTopBar.css">
+{% endblock %}
+{% block content %}
+{% include "teacherPageTop.html" %}
+<div class="middlePart">
+    <div class="chair resource">
+        <div class="itemsBox">
+            <div class="content">
+                <span class="title">桌椅申请资源</span>
+
+                {% for chair in chairs %}
+                <div class="sonContent">
+                    <hr>
+                    <span class="indexSonTitle" data-id="{{chair.id}}">
+                        <a href="/committee/resourceDetail/?submissionID={{chair.id}}">
+                            <span class="name">{{ chair.activity.student.name}}</span>
+                            <span class="desk">{{ chair.number }}桌子</span>
+                            <span class="beachDesk">{{ chair.chairNumber }}沙滩椅</span>
+                            <span class="tent">{{ chair.tentNumber }}帐篷</span>
+                            <span class="other">{{ chair.otherNumber }}</span>
+                            <span class="gray">{{ chair.endTime|date:"Y-m-d H:i:s"}}</span>
+                        </a>
+                        {% if not chair.hasReturned %}
+                        <span class="state ">未归还</span>
+                        <button type="button" class="btn btn-success confirm">确认归还</button>
+                        {% endif %}
+                    </span>                    
+                </div>
+                {% empty %}
+                <div class="sonContent">
+                    <hr>
+                    无相应纪录                 
+                </div>
+                {% endfor %}
+                
+            </div>
+            <a href="/committee/moreApply/?type=chair" class="moreInfo">
+                    更多
+            </a>
+        </div>
+    </div>
+    <div class="classroom resource">
+        <div class="itemsBox">
+            <div class="content">
+                <span class="title">课室申请资源</span>
+
+                {% for classroom in classrooms %}
+                <div class="sonContent">
+                    <hr>
+                    <span class="indexSonTitle" data-id="{{classroom.id}}">
+                        <a href="/committee/resourceDetail/?submissionID={{classroom.id}}">
+                            <span class="name">{{ classroom.activity.student.name }}</span>
+                            <span class="location">
+                                {% ifnotequal classroom.location "[]" %}
+                                    {{classroom.location}}
+                                {% endifnotequal %}
+                                {% ifequal classroom.location "[]" %}
+                                    {% for location in classroom.locations.all %}
+                                        {{location.name}}{{location.locationid}}、
+                                    {% endfor %}
+                                {% endifequal %}
+                            </span>
+
+                            <span class="gray">{{ classroom.endTime|date:"Y-m-d H:i:s"}}</span>
+                        </a>
+                    </span>
+                </div>
+                {% empty %}
+                <div class="empty">
+                    <hr>
+                    无相应纪录                 
+                </div>
+                {% endfor %}
+
+            </div>
+            <a href="/committee/moreApply/?type=classroom" class="moreInfo">
+                    更多
+            </a>
+        </div>
+    </div>
+    <div class="poster resource">
+        <div class="itemsBox">
+            <div class="content">
+                <span class="title">宣传品申请资源</span>
+                {% for poster in posters %}
+                <div class="sonContent">
+                    <hr>
+                    <span class="indexSonTitle" data-id="{{poster.id}}">
+                        <a href="/committee/resourceDetail/?submissionID={{poster.id}}">
+                            <span class="name">{{ poster.activity.student.name }}</span>
+                            <span class="location">
+                                {% ifnotequal poster.location "[]" %}
+                                    {{poster.location}}
+                                {% endifnotequal %}
+                                {% ifequal poster.location "[]" %}
+                                    {% for location in poster.locations.all %}
+                                        {{location.name}}{{location.locationid}}、
+                                    {% endfor %}
+                                {% endifequal %}
+                            </span>
+
+                            <span class="gray">{{ poster.endTime|date:"Y-m-d H:i:s"}}</span>
+                        </a>
+                    </span>
+                </div>
+                {% empty %}
+                <div class="empty">
+                    <hr>
+                    无相应纪录                 
+                </div>
+                {% endfor %}
+            </div>
+            <a href="/committee/moreApply/?type=poster" class="moreInfo">
+                    更多
+            </a>
+        </div>
+    </div>
+    <div class="location resource">
+        <div class="itemsBox">
+            <div class="content">
+                <span class="title">校区场地申请资源</span>
+                {% for location_ in locations %}
+                <div class="sonContent">
+                    <hr>
+                    <span class="indexSonTitle" data-id="{{location.id}}">
+                        <a href="/committee/resourceDetail/?submissionID={{location.id}}">
+                            <span class="name">{{ location_.activity.student.name }}</span>
+                            <span class="location">
+                                {% ifnotequal location_.location "[]" %}
+                                    {{location_.location}}
+                                {% endifnotequal %}
+                                {% ifequal location_.location "[]" %}
+                                    {% for location in location_.locations.all %}
+                                        {{location.name}}{{location.locationid}}、
+                                    {% endfor %}
+                                {% endifequal %}
+                            </span>
+                            <span class="gray">{{ location_.endTime|date:"Y-m-d H:i:s"}}</span>
+                        </a>
+                    </span>
+                </div>
+                {% empty %}
+                <div class="empty">
+                    <hr>
+                    无相应纪录                 
+                </div>
+                {% endfor %}
+            </div>
+            <a href="/committee/moreApply/?type=location" class="moreInfo">
+                    更多
+            </a>
+        </div>
+    </div>
+    <div class="actionCenter resource">
+        <div class="itemsBox">
+            <div class="content">
+                <span class="title">学生活动中心申请资源</span>
+                {% for actionCenter in actionCenters %}
+                <div class="sonContent">
+                    <hr>
+                    <span class="indexSonTitle" data-id="{{actionCenter.id}}">
+                        <a href="/committee/resourceDetail/?submissionID={{actionCenter.id}}">
+                            <span class="name">{{ actionCenter.activity.student.name }}</span>
+                            <span class="location">
+                                {% ifnotequal actionCenter.location "[]" %}
+                                    {{actionCenter.location}}
+                                {% endifnotequal %}
+                                {% ifequal actionCenter.location "[]" %}
+                                    {% for location in actionCenter.locations.all %}
+                                        {{location.name}}{{location.locationid}}、
+                                    {% endfor %}
+                                {% endifequal %}
+                            </span>
+                            <span class="gray">{{ actionCenter.endTime|date:"Y-m-d H:i:s"}}</span>
+                        </a>
+                    </span>
+                </div>
+                {% empty %}
+                <div class="empty">
+                    <hr>
+                    无相应纪录                 
+                </div>
+                {% endfor %}
+            </div>
+            <a href="/committee/moreApply/?type=actionCenter" class="moreInfo">
+                    更多
+            </a>
+        </div>
+    </div>
+    <div class="functionRoom resource">
+        <div class="itemsBox">
+            <div class="content">
+                <span class="title">校团委功能申请资源</span>
+                {% for functionRoom in functionRooms %}
+                <div class="sonContent">
+                    <hr>
+                    <span class="indexSonTitle" data-id="{{functionRoom.id}}">
+                        <a href="/committee/resourceDetail/?submissionID={{functionRoom.id}}">
+                            <span class="name">{{ functionRoom.activity.student.name }}</span>
+                            <span class="location">
+                                {% ifnotequal functionRoom.location "[]" %}
+                                    {{functionRoom.location}}
+                                {% endifnotequal %}
+                                {% ifequal functionRoom.location "[]" %}
+                                    {% for location in functionRoom.locations.all %}
+                                        {{location.name}}{{location.locationid}}、
+                                    {% endfor %}
+                                {% endifequal %}
+                            </span>
+                            <span class="gray">{{ functionRoom.endTime|date:"Y-m-d H:i:s"}}</span>
+                        </a>   
+                       <!--  <span class="state ">未归还</span> -->
+                    </span>
+                </div>
+                {% empty %}
+                <div class="empty">
+                    <hr>
+                    无相应纪录                 
+                </div>
+                {% endfor %}
+            </div>
+            <a href="/committee/moreApply/?type=functionRoom" class="moreInfo">
+                    更多
+            </a>
+        </div>
+    </div>
+</div>
+{% include "footPart.html" %}
+{% endblock %}
+{% block importjs %}
+<script src="/static/js/resourceManage.js"></script>
+{% endblock %}

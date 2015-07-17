@@ -1,0 +1,35 @@
+body{
+	background-color: #ebebeb;
+}
+.sonContent{
+	background-color: white;
+	padding: 10px 20px;
+	border-radius: 10px;
+	margin: 10px 0;
+}
+.state{
+	color: #fff;
+	background-color: #d9534f;
+	border-color: #d43f3a;
+	display: inline-block;
+	padding: 6px 12px;
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 1.428571429;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	margin: 0 10px;
+}
+.confirm{
+	float: right;
+}
+.empty{
+	padding: 15px;
+	background-color: white;
+	border-radius: 10px;
+}

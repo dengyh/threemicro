@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block titlebar %}个人通过的活动{% endblock %}
+{% block import %}
+<link rel="stylesheet" type="text/css" href="/static/css/studentTopBar.css">
+<link rel="stylesheet" type="text/css" href="/static/css/assessActivity.css">
+{% endblock %}
+{% block content %}
+{% include "teacherPageTop.html" %}
+<div class="middlePart ">
+    <div class="titleItem"><h1>{% ifequal type "committee" %}团委{% else %}个人{% endifequal %}通过的活动</h1></div>
+    {% for item in activities %}
+    <div class="activityItem">
+        <dl class="itemBox {{user.first_name}}" id="{{item.id}}">
+            <dt>
+                {% include "label.html" %}
+                {{item.title}}
+            </dt>
+            <dd>开始时间 : {{item.startDateTime|date:"Y-m-d"}} {{item.startDateTime|time:"H:i"}}</dd>
+            <dd>结束时间 : {{item.endDateTime|date:"Y-m-d"}} {{item.endDateTime|time:"H:i"}}</dd>
+            <dd>申请时间 : {{item.signDateTime|date:"Y-m-d"}} {{item.signDateTime | time:"H:i"}}</dd>
+            <dd>地点 : {{item.location}}</dd>
+            <div class="operation">
+                <a class="tdetail" {% ifequal user.first_name 'teacher' %}data-href="/teacher/detail/{{item.id}}/"{% else %} data-href="/committee/detail/{{item.id}}/"{% endifequal %}>
+                    <span>详情</span><img src="/static/images/detail.png">
+                </a>
+            </div>
+            <div class="clear">
+            </div>
+        </dl>
+    </div>
+    {% empty %}
+        <div class="ifEmpty">
+            当前项还没有活动！
+        </div>
+    {% endfor %}
+    <div class="clear">
+    </div>
+    <div class="pagination-box">
+        <nav>
+            <ul class="pagination">
+                {% if activities.has_previous %}
+                <li><a href="{{querystring}}page={{activities.previous_page_number}}">&laquo;</a></li>
+                {% else %}
+                <li class="disabled"><a href="#">&laquo;</a></li>
+                {% endif %}
+                {% for num in numList %}
+                {% ifequal num activities.number %}
+                <li class="active"><a href="{{querystring}}page={{num}}">{{num}} <span class="sr-only">(current)</span></a></li>
+                {% else %}
+                <li><a href="{{querystring}}page={{num}}">{{num}} </a></li>
+                {% endifequal %}
+                {% endfor %}
+                {% if activities.has_next %}
+                <li><a href="{{querystring}}page={{activities.next_page_number}}">&raquo;</a></li>
+                {% else %}
+                <li class="disabled"><a href="#">&raquo;</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+    <div class="clear">
+    </div>
+</div>
+{% include "footPart.html" %}
+{% endblock %}

@@ -1,0 +1,63 @@
+.middlePart{
+	
+	padding: 10px;
+	overflow: hidden;
+	margin-bottom: 160px;
+}
+
+.resource{
+	width: 48%;
+	float: left;
+	background-color: white;
+	padding: 10px;
+	margin: 10px 1%;
+}
+ul>li{
+	list-style: none;
+}
+.itemsBox{
+	background-color: white;
+}
+.title{
+	text-align: center;
+	display: block;
+	font-size: 19px;
+	margin: 5px 0;
+}
+.moreInfo{
+	text-align: center;
+	width: 100%;
+	display: block;
+	padding: 6px 0;
+	background-color: #91bc66;
+	font-size: 16px;
+	text-decoration: none;
+	color: white;
+	font-weight: 700;
+}
+hr{
+	margin: 0;
+}
+.state{
+	color: #fff;
+	background-color: #d9534f;
+	border-color: #d43f3a;
+	display: inline-block;
+	padding: 6px 12px;
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 1.428571429;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+.empty{
+	text-align: center;
+	padding: 15px;
+	background-color: white;
+	border-radius: 10px;
+}

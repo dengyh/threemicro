@@ -1,0 +1,32 @@
+{% extends "microbase.html" %}
+{% block titlebar %}权益在线{% endblock %}
+{% block import %}
+<link rel="stylesheet" type="text/css" href="/static/css/microRightsOnline.css">
+{% endblock %}
+{% block content %}
+<div data-role="content">
+    <div class="tip">您输入的信息有误，请重新输入！</div>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div id="user"><label>姓名:</label><input type="text" name="name" ></div>
+        <div id="email"><label>邮箱:</label><input type="text" name="email" ></div>
+        <div id="tel"><label>电话:</label><input type="text" name="phone" ></div>
+        <div>
+            <label>校区:</label>
+            <select id="campus" name="campus">
+                <option value="south">南校区</option>
+                <option value="east">东校区</option>
+                <option value="north">北校区</option>
+                <option value="zhuhai">珠海校区</option>
+            </select>
+        </div>
+        <div id="content"><label>内容:</label><textarea name="content" placeholder=""></textarea></div>
+        <button type="submit" id="submitMsg">提交</button>
+    </form>
+</div>
+{% endblock %}
+{% block importjs %}
+<script src="/static/js/bootstrap-tooltip.js"></script>
+<script src="/static/js/bootstrap-popover.js"></script>
+<script src="/static/js/microRightsOnline.js"></script>
+{% endblock %}

@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+{% block titlebar %}活动详情{% endblock %}
+{% block import %}
+<link rel="stylesheet" type="text/css" href="/static/css/tActivityDetail.css">
+<link rel="stylesheet" type="text/css" href="/static/css/studentTopBar.css">
+{% endblock %}
+{% block content %}
+{% include "teacherPageTop.html" %}
+<div class="middlePart">
+    <div class="titleItem"><h1>活动详情</h1></div>
+    <div class="activityItem">
+        <dl id="{{activity.id}}">
+            <dt>
+                <span class="{{title}}">{{activity.title}}
+                <span class="smallFont"> 
+                {% ifequal item.type 'publicWelfare'%}
+                    公益活动
+                {% endifequal %}
+                {% ifequal item.type 'nonPublicWelfare'%}
+                    非公益活动
+                {% endifequal %}
+                {% ifequal item.type 'academic' %}
+                    学术活动
+                {% endifequal %}
+                {% ifequal item.type 'unWelfareSport' %}
+                    体育活动
+                {% endifequal %}
+                {% ifequal item.type 'welfareSport' %}
+                    公益体育活动
+                {% endifequal %}
+                {% ifequal item.type 'other' %}
+                    其他活动
+                {% endifequal %}
+                </span> 
+            </span>
+            </dt>
+            <hr class="divider">
+            <dd>
+                <span class="blank">
+                    负责人 : 
+                    <span class="smallFont" data-flag="true" data-class="sponsor">{{activity.student.name}}</span>
+                </span>
+                <span class="blank">
+                    校区 : 
+                    <span class="smallFont" data-flag="true" data-class="campus">{{activity.get_campus_display}}</span>
+                </span>
+                <span class="blank">
+                    时间 : 
+                    <span class="smallFont" data-flag="true" data-class="startDateTime">{{activity.startDateTime|date:"Y-m-d"}} {{activity.startDateTime|time:"H:i"}} 
+                    </span> -- 
+                    <span class="smallFont" data-flag="true" data-class="endDateTime">{{activity.endDateTime|date:"Y-m-d"}} {{activity.endDateTime|time:"H:i"}}</span>
+                    </span>
+                <span class="blank">
+                    联系方式 : 
+                    <span class="smallFont">{{activity.student.phone}}</span>
+                </span>
+                <span class="blank">
+                    社团 : 
+                    <span class="smallFont">{{activity.societies.name}}</span>
+                </span>
+                <hr class="divider">
+                <p class="content smallFont" data-flag="true">{{activity.content | safe}}</p>
+                {% ifequal activity.type "publicWelfare" %}
+                <span class="blank">
+                    公益时长 : 
+                    <span class="smallFont" data-flag="true" data-class="maxTime">{{activity.maxTime|floatformat:"2"}}h</span>
+                </span>
+                {% endifequal %}
+                {% ifequal activity.type "welfareSport" %}
+                    <span class="blank">
+                        公益时长 : 
+                        <span class="smallFont" data-flag="true" data-class="maxTime">{{activity.maxTime|floatformat:"2"}}h</span>
+                    </span>
+                {% endifequal %}
+                {% ifequal activity.type "unWelfareSport" %}
+                    <span class="blank">
+                        盖章个数 : 
+                        <span class="smallFont" data-flag="true" data-class="maxTime">{{activity.maxTime|floatformat:"0"}}</span>
+                    </span>
+                {% endifequal %}
+                <span class="blank">
+                    地点 : 
+                    <span class="smallFont" data-flag="true" data-class="location">{{activity.location}}</span>
+                </span>
+                <span class="blank">
+                    总人数 : 
+                    <span class="smallFont" data-flag="true" data-class="totalNumber">{{activity.totalNumber}}</span>
+                </span>
+                {% if activity.deadline%}
+                <span class="blank">
+                    报名截止时间 : 
+                    <span class="smallFont endTime {{deadline}}">{{activity.deadline|date:"Y-m-d"}} {{activity.deadline|time:"H:i"}}</span>
+                </span>
+                {% endif %}
+                {% if submission %}
+                <table class="table submission">
+                    <thead>
+                        <tr>
+                            <th>申请类型</th>
+                            <th>开始时间</th>
+                            <th>结束时间</th>
+                            <th>课室 / 地点</th>
+                            <th>桌子数量</th>
+                            <th>沙滩椅数量</th>
+                            <th>帐篷数量</th>
+                            <th>其他物资</th>
+                            <th>附件</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in submission %}
+                        <tr data-id="{{item.id}}">
+                            <td data-flag="true" data-class="sonType">{{item.get_type_display}}</td>
+                            <td data-flag="true" data-class="sonStartDateTime">{{item.startTime|date:"Y-m-d"}} {{item.startTime|time:"H:i"}}</td>
+                            <td data-flag="true" data-class="sonEndDateTime">{{item.endTime|date:"Y-m-d"}} {{item.endTime|time:"H:i"}}</td>
+                            <td data-flag="true" data-class="sonLocation">
+                                {% ifnotequal item.location "[]" %}
+                                    {{item.location}}
+                                {% endifnotequal %}
+                                {% ifequal item.location "[]" %}
+                                    {% for location in item.locations.all %}
+                                        {{location.name}}{{location.locationid}}、
+                                    {% endfor %}
+                                {% endifequal %}
+                            </td>
+                            <td data-flag="true" data-class="sonDesk">{% if item.number %}{{item.number}}{% endif %}</td>
+                            <td data-flag="true" data-class="sonBeachDesk">{% if item.chairNumber %}{{item.chairNumber}}{% endif %}</td>
+                            <td {% if not item.tentNumberMark %} class="tag" {% endif %}>{% if item.tentNumber %}{{item.tentNumber}}{% endif %}</td>
+                            <td data-flag="true" data-class="sonOther">{% if item.otherNumber %}{{item.otherNumber}}{% endif %}</td>
+                            <td data-flag="true" data-class="sonSubmission">
+                                {% if item.file %}
+                                <a class="btn btn-success" data-href="{{item.file.url}}">下载</a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {% endif %}
+                {% if attachment %}
+                <table class="table attachment">
+                    <thead>
+                        <tr>
+                            <th>资料描述</th>
+                            <th>资料下载</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in attachment %}
+                    <tr data-id="{{item.id}}">
+                        <td data-flag="true">{{item.description}}</td>
+                        <td data-flag="true" data-class="sonAttachment"><a class="btn btn-success" data-href="{{item.file.url}}">下载</a></td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td>无</td>
+                        <td><a class="btn btn-success disabled" data-href="#">无</a></td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {% endif %}
+            </dd>
+            {% if hasButton %}
+            {% ifequal identity "committee" %}
+            <p>指导老师 <strong>{{activity.teacher.name}}</strong> 意见: {{activity.firstRemark}}</p>
+            {% endifequal %}
+            <textarea id="remark" placeholder="审批意见/必填"></textarea>
+            <div class="operation">
+                <a data-toggle="modal" data-target="#confirm"></a>
+                <button data-name="pass" class="pass btn btn-success" data-id="{{activity.id}}" ><img src="/static/images/true.png"></button>
+                <button data-name= "unpass" class="unpass btn btn-danger" data-id="{{activity.id}}"><img src="/static/images/false.png"></button>
+                <button data-name="halfPass" type="button" class="btn btn-warning halfPass" data-id="{{activity.id}}">预审批</button>
+            </div>
+            {% else %}
+            {% if isHalf %}
+            {% ifequal identity "committee" %}
+            <p>指导老师 <strong>{{activity.teacher.name}}</strong> 意见: {{activity.firstRemark}}</p>
+            {% endifequal %}
+            <textarea id="remark" placeholder="审批意见/必填">{% ifequal identity "committee" %}{{activity.secondRemark}}{% else %}{{activity.firstRemark}}{% endifequal %}</textarea>
+            <div class="operation">
+                <a data-toggle="modal" data-target="#confirm"></a>
+                <button data-name="pass" class="pass btn btn-success" data-id="{{activity.id}}" ><img src="/static/images/true.png"></button>
+                <button data-name= "unpass" class="unpass btn btn-danger" data-id="{{activity.id}}"><img src="/static/images/false.png"></button>
+            </div>
+            {% else %}
+            {% if isAssesser %}
+            {% ifequal identity "committee" %}
+            <p>指导老师 <strong>{{activity.teacher.name}}</strong> 意见: {{activity.firstRemark}}</p>
+            {% endifequal %}
+            <textarea id="remark" placeholder="审批意见/必填">{% ifequal identity "committee" %}{{activity.secondRemark}}{% else %}{{activity.firstRemark}}{% endifequal %}</textarea>
+            <div class="operation">
+                <a data-toggle="modal" data-target="#confirm"></a>
+                <button data-name="cancel" type="button" class="btn btn-danger halfPass" data-id="{{activity.id}}">取消</button>
+            </div>
+            {% endif %}
+            {% endif %}
+            {% endif %}
+        </dl>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="rejectedBox">
+        <button type="button" class="btn btn-success mark">标记</button>
+        <button type="button" class="btn btn-danger unmark">取消</button>
+    </div>
+</div>
+{% include "footPart.html" %}
+{% endblock %}
+{% block importjs %}
+<script src="/static/js/tActivityDetail.js"></script>
+{% endblock %}

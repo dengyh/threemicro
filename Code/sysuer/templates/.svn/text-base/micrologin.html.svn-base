@@ -1,0 +1,30 @@
+{% extends "microbase.html" %}
+{% block titlebar %}登录三微{% endblock %}
+{% block content %}
+<div data-role="content">
+    <div class="loginBox">
+        <div class="loginTopImage">
+            <img src="/static/images/tree.jpg">
+        </div>
+        <form method="post" action="/login/" class="loginForm" rel="external">
+            {% csrf_token %}
+            <div class="netID">
+                <img src="/static/images/user.jpg">
+                <input type="text" placeholder="NetID" name="username">
+            </div>
+            <div class="password">
+                <img src="/static/images/key.jpg">
+                <input type="password" placeholder="Password" name="password">
+            </div>
+            <input type="hidden" name="originUrl" value="{{originUrl}}" />
+            <p>{{ wrongMsg }}</p>
+            <div id="loginBtn">
+                <button type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+{% block import %}
+<link rel="stylesheet" type="text/css" href="/static/css/micrologin.css">
+{% endblock %}

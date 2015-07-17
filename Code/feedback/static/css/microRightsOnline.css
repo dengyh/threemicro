@@ -1,0 +1,53 @@
+body{
+	background: url('/static/images/background_3.jpg');
+	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+}
+form{
+	background-color: rgba(248, 248, 231, 0.59);
+	color: #925f07;
+	overflow: hidden;
+	padding-top: 30%;
+	padding-bottom: 30%;
+}
+form div{
+	overflow: hidden;
+}
+form label{
+	float: left;
+	width: 25%;
+	font-size: 10rem;
+	padding: 1% 0;
+	padding-left: 10%;
+}
+.ui-page-theme-a,.ui-input-text{
+	width: 60%;
+	float: left;
+	margin: 1% 0;
+}
+textarea.ui-input-text{
+	width: 60%;
+}
+#submitMsg{
+	margin-top: 1.5rem;
+	margin-left: 35%;
+	margin-right: 35%;
+	width: 30%;
+	background-color: #6bb070;
+	color: white;
+}
+.ui-select { 
+	width: 60%;
+	margin: 0;
+	margin-bottom: 0.5em;
+}
+.ui-shadow:active{
+	box-shadow: 5px 5px 15px #6bb070;
+}
+.tip{
+	text-align: center;
+	color: white;
+	background-color: rgba(247, 13, 13, 0.49);
+	padding: 0.5rem;
+	display: none;
+}

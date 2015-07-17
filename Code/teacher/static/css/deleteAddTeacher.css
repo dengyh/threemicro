@@ -1,0 +1,64 @@
+.middlePart{
+	background-color: #9bca6a;
+	margin-top: 36px!important;
+	border-radius: 10px;
+}
+.deleteLabel,.addLabel{
+	background-color: #013201;
+	padding: 12px;
+	font-size: 30px;
+	padding-left: 5%;
+	color: white;
+}
+.delete,.add{
+	padding: 36px 0;
+}
+.teacherItem{
+	padding: 2% 0;
+	margin: 0 5%;
+	font-size: 24px;
+	border-bottom: 2px solid #9ca88d;
+
+}
+.teacherItem span{
+	display: inline-block;
+	margin-left: 5%;
+}
+.teacherItem button{
+	background-color: #498b0a;
+	border: none;
+	border-radius: 3px;
+	padding: 6px 30px;
+	float: right;
+	color: white;
+}
+.add form{
+	margin-top: 36px;
+}
+#submit{
+	color: white;
+	background-color: #498b0a;
+	padding: 6px 30px;
+	border: none;
+}
+.deleteBtn {
+	float: right;
+}
+.table>thead>tr>td,
+.table>tbody>tr>td,
+.table>tfoot>tr>td {
+	border-color: rgb(150,150,150);
+}
+.table>thead>tr>th,
+.table>tbody>tr>th,
+.table>tfoot>tr>th {
+	border: none;
+}
+.table {
+	width: 90%;
+	margin-left: 5%;
+	margin-top: 20px;
+}
+.delete {
+	padding-bottom: 6px;
+}

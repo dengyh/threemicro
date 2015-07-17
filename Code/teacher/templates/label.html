@@ -1,0 +1,21 @@
+<span class="labels" title="{{item.type}}">
+    {% ifequal item.type 'publicWelfare'%}
+        公益活动
+    {% endifequal %}
+    {% ifequal item.type 'nonPublicWelfare'%}
+        非公益活动
+    {% endifequal %}
+    {% ifequal item.type 'academic' %}
+        学术活动
+    {% endifequal %}
+    {% ifequal item.type 'unWelfareSport' %}
+        体育活动
+    {% endifequal %}
+    {% ifequal item.type 'welfareSport' %}
+        公益体育活动
+    {% endifequal %}
+    {% ifequal item.type 'other' %}
+        其他活动
+    {% endifequal %}
+</span>
+<div class="labelArrow"></div>

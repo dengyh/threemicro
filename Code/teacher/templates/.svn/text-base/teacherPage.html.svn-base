@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block titlebar %}老师首页{% endblock %}
+{% block import %}
+<link rel="stylesheet" type="text/css" href="/static/css/teacherPage.css">
+{% endblock %}
+{% block content %}
+{% include "teacherPageTop.html" %}
+<div class="middlePart">
+	<div class="checkOutApplied">
+        <figure class="effect-marley">
+            <a data-href="/{{user.first_name}}/assess/">
+                <img src="/static/images/applyState.jpg" alt="审批">
+                <figcaption>
+                    <h2>审批活动</h2>
+                    <p>你可以通过这里查看未审批的活动</p>
+                </figcaption>
+            </a>         
+        </figure>
+    </div> 
+    {% ifequal type "committee" %}
+    <div class="checkOutSigned">
+        <figure class="effect-marley">
+            <a data-href="/{{user.first_name}}/checkout/">
+                <img src="/static/images/signedState.jpg" alt="通过">
+                <figcaption>
+                    <h2>通过活动</h2>
+                    <p>你可以通过这里查看已经通过的活动</p>
+                </figcaption>
+            </a>         
+        </figure>
+    </div>
+    {% endifequal %}
+</div>
+{% include "footPart.html" %}
+
+{% endblock %}

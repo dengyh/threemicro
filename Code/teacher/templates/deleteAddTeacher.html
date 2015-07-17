@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block titlebar %}增删老师{% endblock %}
+{% block import %}
+<link rel="stylesheet" type="text/css" href="/static/css/deleteAddTeacher.css">
+<link rel="stylesheet" type="text/css" href="/static/css/studentTopBar.css">
+{% endblock %}
+{% block content %}
+{% include "teacherPageTop.html" %}
+<div class="middlePart">
+    <div class="delete">
+        <div class="deleteLabel">
+            <label>删除</label>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>学工号</th>
+                    <th>工资号</th>
+                    <th>工作单位</th>
+                    <th>性别</th>
+                    <th>联系电话</th>
+                    <th>邮箱</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for item in teachers %}
+                <tr>
+                    <td>{% if item.name %}{{item.name}}{% endif %}</td>
+                    <td>{% if item.tno %}{{item.tno}}{% endif %}</td>
+                    <td>{% if item.wageNumber %}{{item.wageNumber}}{% endif %}</td>
+                    <td>{% if item.work %}{{item.work}}{% endif %}</td>
+                    <td>{% if item.gender %}{{item.get_gender_display}}{% endif %}</td>
+                    <td>{% if item.phone %}{{item.phone}}{% endif %}</td>
+                    <td>{% if item.email %}{{item.email}}{% endif %}</td>
+                    <td><a data-href="/committee/reSet/{{item.tno}}/" class="btn btn-default reSetBtn">重设密码(888888)</a></td>
+                    <td><a data-href="/committee/delete/{{item.tno}}/" class="btn btn-default deleteBtn">删除</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="add">
+        <div class="addLabel">
+            <label>增加</label>
+        </div>
+        <form class="form-horizontal" role="form" method="post" action="/committee/create/teacher/">
+            <div class="form-group num">
+                <label class="col-sm-2 control-label">学工号</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" placeholder="学工号(用于登录)" name="tno" data-text="">
+                </div>
+            </div>
+            <div class="form-group name">
+                <label class="col-sm-2 control-label">姓名</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" placeholder="姓名" name="name">
+                </div>
+            </div>
+            <div class="form-group password">
+                <label class="col-sm-2 control-label">密码</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" placeholder="初始密码" name="password">
+                </div>
+            </div>
+            <!-- <div class="form-group societies">
+                <label class="col-sm-2 control-label">社团</label>
+                <div class="col-sm-4">
+                    <select name="societies" class="form-control">
+                    {% for item in societies %}
+                        <option value="{{item.id}}">{{item.name}}</option>
+                    {% endfor %}
+                    </select>
+                </div>
+            </div> -->
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default" id="submit">提交</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% include "footPart.html" %}
+{% endblock %}
+{% block importjs %}
+<script src="/static/js/deleteAddTeacher.js"></script>
+{% endblock %}

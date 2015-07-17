@@ -1,0 +1,18 @@
+/*.topBack{
+    background: url("/static/images/studentBackground.jpg");
+    height: 100px;
+    -webkit-background-size: cover;
+    padding: 0;
+}*/
+.login a{
+    padding-left: 5px;
+    display: block;
+}
+.middlePart{
+    margin: 0 auto;
+    margin: 0 10%;
+    width: 80%;
+    padding: 3% 0;
+    padding-bottom: 0;
+    text-align: center; 
+}

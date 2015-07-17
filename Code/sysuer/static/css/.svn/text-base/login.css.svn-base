@@ -1,0 +1,67 @@
+body{
+	/*background-image: url('/static/images/bgLogin.png');*/
+	/*background-size: 100% 100%;
+	background-repeat: no-repeat;*/
+	background-color: #16a085;
+}
+html,body{
+	height: 100%;
+	min-width: 500px;
+}
+.bg{
+	background-color: rgba(255, 255, 255);
+	height: 100%;
+	/*padding: 15% 0;*/
+	width: 100%;
+  	overflow: hidden;
+}
+.bg>div{
+	margin: 0 auto;
+	margin-top: 10%;
+	width: 400px;
+}
+.bg>div>img{
+	/*width: 100%;*/
+}
+.pg-canvas{
+	position: fixed;
+	z-index: -1;
+}
+form{
+	margin: 0 auto;
+	height: 22rem;
+	padding: 4%;
+	background-color: rgba(255, 255, 255, 0.86);
+	*background: white;
+	background\0: white;
+	border-radius: 10px;
+	width: 400px;
+	behavior: url(ieCss3.htc);
+}
+.logo{
+	width: 100%;
+	text-align: center;
+}
+.logo img{
+	width: 100%;
+}
+.btn-success{
+	margin: 0 auto;
+	width: 10rem;
+	background-color: #16a085;
+	border-color: #16a085;
+}
+.btn-success:hover, .btn-success:active,
+.btn-success:visited,.btn-success:focus{
+	background-color: #16a099;
+}
+.wrongMsg{
+	color: rgb(217,83,79);
+	text-align: center;
+	padding-left: 15px;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	font-size: 2rem;
+	font-family: "微软雅黑";
+	font-weight: 700;
+}

@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block titlebar %} {{title}} {% endblock %}
+{% block import %}
+<link rel="stylesheet" type="text/css" href="/static/css/moreApply.css">
+{% endblock %}
+{% block content %}
+{% include "teacherPageTop.html" %}
+<div class="middlePart">
+    <div class="titleItem">
+        <h1>
+            {{ typeTitle }}
+        </h1>
+    </div>
+    {% ifequal applyType "chair" %}
+        {% for submission in submissions %}
+        <div class="sonContent">
+            <span class="indexSonTitle" data-id="{{submission.id}}">
+                <a href="/committee/resourceDetail/?submissionID={{submission.id}}">
+                    <span class="name">{{ submission.activity.student.name }}</span>
+                    <span class="desk">{{ submission.number }}桌子</span>
+                    <span class="beachDesk">{{ submission.chairNumber }}沙滩椅</span>
+                    <span class="tent">{{ submission.tentNumber }}帐篷</span>
+                    <span class="other">{{ submission.otherNumber }}</span>
+                    <span class="gray">{{ submission.endTime|date:"Y-m-d H:i:s"}}</span>
+                </a>
+                {% if not submission.hasReturned %}
+                <span class="state ">未归还</span>
+                <button type="button" class="btn btn-success confirm">确认归还</button>
+                {% endif %}
+            </span>      
+        </div>
+        {% empty %}
+        <div class="empty">
+            无相应纪录                 
+        </div>
+        {% endfor %}
+    {% endifequal %}
+    {% ifnotequal applyType "chair" %}
+        {% for submission in submissions %}
+        <div class="sonContent">
+            <span class="indexSonTitle" data-id="{{submission.id}}">
+                <a href="/committee/resourceDetail/?submissionID={{submission.id}}">
+                    <span class="name">{{ submission.activity.student.name }}</span>
+                    <span class="location">
+                        {% ifnotequal submission.location "[]" %}
+                            {{submission.location}}
+                        {% endifnotequal %}
+                        {% ifequal submission.location "[]" %}
+                            {% for location in submission.locations.all %}
+                                {{location.name}}{{location.locationid}}、
+                            {% endfor %}
+                        {% endifequal %}
+                    </span>
+                    <span class="gray">{{ submission.endTime|date:"Y-m-d H:i:s"}}</span>
+                </a>
+               <!--  <span class="state ">未归还</span>
+               <button type="button" class="btn btn-success confirm">确认归还</button> -->
+            </span>      
+        </div>
+        {% empty %}
+        <div class="empty">
+            无相应纪录                 
+        </div>
+        {% endfor %}
+        
+
+    {% endifnotequal %}
+
+    <div class="pagination-box">
+        <nav>
+            <ul class="pagination">
+                {% if submissions.has_previous %}
+                <li><a href="{{querystring}}page={{submissions.previous_page_number}}">&laquo;</a></li>
+                {% else %}
+                <li class="disabled"><a href="#">&laquo;</a></li>
+                {% endif %}
+                {% for num in numList %}
+                {% ifequal num submissions.number %}
+                <li class="active"><a href="{{querystring}}page={{num}}">{{num}} <span class="sr-only">(current)</span></a></li>
+                {% else %}
+                <li><a href="{{querystring}}page={{num}}">{{num}} </a></li>
+                {% endifequal %}
+                {% endfor %}
+                {% if submissions.has_next %}
+                <li><a href="{{querystring}}page={{submissions.next_page_number}}">&raquo;</a></li>
+                {% else %}
+                <li class="disabled"><a href="#">&raquo;</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</div>
+{% include "footPart.html" %}
+<script src="/static/js/resourceManage.js"></script>
+{% endblock %}
