@@ -1,0 +1,37 @@
+{% extends "microbase.html" %}
+{% block titlebar %}活动参与者{% endblock %}
+{% block import %}
+<link rel="stylesheet" type="text/css" href="/static/css/microAttendedPeople.css">
+{% endblock %}
+{% block content %}
+<div data-role="header" id="latestHeader">
+    <h1>活动参与者</h1>
+</div>
+<div data-role="content" id="attendedActivity">
+    <div data-id="{{activity.id}}">
+        <div class="onekey">
+            <a class="onekeyToSignIn" name="onekeyToSignIn" data-aid="{{activity.id}}">一键签到</a>
+            <a class="onekeyToSignOut" name="onekeyToSignOut" data-aid="{{activity.id}}">一键签退</a>
+        </div>
+        <dl class="activityItem">
+            {% for item in registrants %}
+            <dd class="name">{{item.student.name}}</dd>
+            <dd class="num">{{item.student.get_gender_display}}</dd>
+            <dd class="num">{{item.student.netid}}</dd>
+            <dd class="num">{{item.student.phone}}</dd>
+            <dd class="signingBtn" data-aid="{{item.activity.id}}">
+                <a class="signIn" name="signIn" data-id="{{item.id}}"><img src="/static/images/jia.png"></a>
+                <a class="signOut" name="signOut" data-id="{{item.id}}"><img src="/static/images/jian.png"></a>
+            </dd>
+            {% empty %}
+                <p class="alert">没有参与者</p>
+            {% endfor %}
+            
+        </dl>
+        <a type="button" class="confirmEnd btn btn-success" data-aid="{{activity.id}}" >确认结束</a>
+    </div>
+</div>
+{% endblock %}
+{% block importjs %}
+<script src="/static/js/microAttendedPeople.js"></script>
+{% endblock %}

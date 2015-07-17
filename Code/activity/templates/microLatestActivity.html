@@ -1,0 +1,59 @@
+{% extends "microbase.html" %}
+{% block titlebar %}近期活动{% endblock %}
+{% block import %}
+<link rel="stylesheet" type="text/css" href="/static/css/microLatestActivity.css">
+{% endblock %}
+{% block content %}
+<div data-role="header" id="latestHeader">
+    <h1>近期活动</h1>
+</div>
+<div data-role="content" id="treeNav">
+    <div><button id="unpassActivity" name="open"><img src="/static/images/list.jpg">公益活动</button></div>
+    <span class="vertical"></span>
+    <div class="activity">
+        <div class="campusItem">
+            <span class="campus passOrUnPass"></span>
+            <a href="#"><button class="Campus" id="unpass">未截止</button></a>
+        </div>
+    </div>
+    <div class="campusRight pass">
+        <!-- <div class="campusItem">
+            <span class="south campus"></span>
+            <a href="/activity/campus/complete/south/"><button id="southCampus" class="Campus" name="south" >南校区</button></a>
+        </div>
+        <div class="campusItem">
+            <span class="east campus"></span>
+            <a href="/activity/campus/complete/east/"><button id="eastCampus" class="Campus" name="east">东校区</button></a>
+        </div>
+        <div class="campusItem">
+            <span class="north campus"></span>
+            <a href="/activity/campus/complete/north/"><button id="northCampus" class="Campus" name="north">北校区</button></a>
+        </div> -->
+        <div class="campusItem">
+            <span class="zhuhai campus"></span>
+            <a href="/activity/campus/complete/zhuhai/"><button id="zhuhaiCampus" class="Campus" name="zhuhai">珠海校区</button></a>
+        </div>
+    </div>
+    <div class="campusRight unpass">
+        <div class="campusItem">
+            <span class="south campus"></span>
+            <a href="/activity/campus/south/"><button id="southCampus" class="Campus" name="south" >南校区</button></a>
+        </div>
+        <div class="campusItem">
+            <span class="east campus"></span>
+            <a href="/activity/campus/east/"><button id="eastCampus" class="Campus" name="east">东校区</button></a>
+        </div>
+        <div class="campusItem">
+            <span class="north campus"></span>
+            <a href="/activity/campus/north/"><button id="northCampus" class="Campus" name="north">北校区</button></a>
+        </div>
+        <div class="campusItem">
+            <span class="zhuhai campus"></span>
+            <a href="/activity/campus/zhuhai/"><button id="zhuhaiCampus" class="Campus" name="zhuhai">珠海校区</button></a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block importjs %}
+<script src="/static/js/microLatestActivity.js"></script>
+{% endblock %}

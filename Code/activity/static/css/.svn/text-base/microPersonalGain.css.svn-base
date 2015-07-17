@@ -1,0 +1,48 @@
+body{
+    background-image: url("/static/images/background_1.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+#pageone{
+    background-color: rgba(255, 255, 255, 0.35);
+}
+#latestHeader{
+    background-color: transparent;
+    border-color: #a7ca7d;
+}
+#latestHeader h1{
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    font-size: 2rem;
+    color: white;
+}
+.welfareTime{
+    color: #91600f;
+    font-size: 1.6rem;
+}
+#attendedActivity .attended{
+    display: block;
+    color: black;
+    font-size: 1.6rem;
+    margin: 0.5rem 0rem;
+}
+.activityItem{
+    border-bottom: 1px solid #dadada;
+    padding: 1rem 2rem;
+    margin-bottom: 1rem;
+}
+dt{
+    margin-bottom: 0.3rem;
+    font-size: 1.5rem;
+    color: #407604;
+}
+dd{
+    font-size: 1rem;
+    color: #323a28;
+}
+.innerDiv{
+    overflow-x: auto;
+    width: 100%;
+    height: 39rem;
+}

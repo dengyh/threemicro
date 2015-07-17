@@ -1,0 +1,27 @@
+{% extends "microbase.html" %}
+{% block titlebar %}个人成果{% endblock %}
+{% block content %}
+<div data-role="header" id="latestHeader">
+    <h1>个人成果</h1>
+</div>
+<div data-role="content" id="attendedActivity">
+    <div class="welfareTime">公益总时长 : {{student.totalTime|floatformat:"2"}}H</div>
+    <div class="honor">信誉度 {{student.honour|floatformat}}%
+    <div >
+        <span class="attended">曾参加的活动
+        {% for item in activities %}
+        <div class="activityItem" id="activity{{item.id}}">
+            <dt>{{item.title}}</dt>
+            <dd>时间 : {{item.startDateTime|date:"Y-m-d"}} {{item.startDateTime|time:"H:i"}} 到 {{item.endDateTime|date:"Y-m-d"}} {{item.endDateTime|time:"H:i"}}</dd>
+            <dd>地点 : {{item.location}}</dd>
+            <dd>公益时间 : {{item.registrant.time|floatformat:"2"}}H</dd>
+        </div>
+        {% empty %}
+            <p class="alert">当前还没有完成任何活动，多参加活动吧</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+{% block import %}
+<link rel="stylesheet" type="text/css" href="/static/css/microPersonalGain.css">
+{% endblock %}

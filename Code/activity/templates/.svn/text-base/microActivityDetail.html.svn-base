@@ -1,0 +1,30 @@
+{% extends "microbase.html" %}
+{% block titlebar %}活动{% endblock %}
+{% block import %}
+<link rel="stylesheet" type="text/css" href="/static/css/microActivityDetail.css">
+{% endblock %}
+{% block content %}
+<div data-role="content" id="activityContent" class="innerDiv">
+    <dl class="activityItem">
+        <dt>{{activity.title}}asdfasdf</dt>
+        <dt>
+            <dd>公益时长 : {{activity.maxTime}}</dd>
+        	<dd>时间 : {{activity.startDateTime|date:"Y-m-d"}} {{activity.startDateTime|time:"H:i"}} 到 {{activity.endtateTime|date:"Y-m-d"}} {{activity.endtateTime|time:"H:i"}}</dd>
+        	<dd>地点 : {{activity.location}}</dd>
+            <dd>校区 : {{activity.get_campus_display}}</dd>
+        	<dd>负责人 : {{activity.student.name}}</dd>
+        	<dd>联系方式 : {{activity.student.phone}}</dd>
+        	<dd>内容 : <span class="content">{{activity.content | safe}}</span></dd>
+            <dd>总人数 : {{activity.totalNumber}}</dd>
+            <dd>报名截止时间 : {{activity.deadline|date:"Y-m-d"}} {{activity.deadline|time:"H:i"}}</dd>
+        </dt>
+        {% ifequal type "student" %}
+        <button id="cancelSigning" data-id="{{activity.id}}" class="signOut" name="signOut" {% if isSign %}{% else %}style="display:none;"{% endif %}>取消报名</button>
+        <button id="signUp" data-id="{{activity.id}}" class="signIn" name="signIn" {% if isSign %}style="display:none;"{% endif %}>报名</button>
+        {% endifequal %}
+    </dl>
+</div>
+{% endblock %}
+{% block importjs %}
+<script src="/static/js/microActivityDetail.js"></script>
+{% endblock %}

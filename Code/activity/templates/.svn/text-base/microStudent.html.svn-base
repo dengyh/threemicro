@@ -1,0 +1,19 @@
+{% extends "microbase.html" %}
+{% block titlebar %}学生{% endblock %}
+{% block import %}
+<link rel="stylesheet" type="text/css" href="/static/css/microStudent.css">
+{% endblock %}
+{% block content %}
+<div data-role="content">
+    <div class="treeNode">
+        <div><a id="applied" href="/activity/campus/">近期</a></div>
+        <div><a id="signingUp" href="/activity/registing/">正在报名</a></div>
+        <div><a id="attended" href="/activity/complete/">已参加</a></div>
+        <div><a id="latest" href="/activity/applied/">已申请</a></div>
+    </div>
+</div>
+{% endblock %}
+{% block importjs %}
+<script src="/static/js/microStudent.js"></script>
+{% endblock %}
+

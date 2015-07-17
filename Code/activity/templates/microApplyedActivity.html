@@ -1,0 +1,24 @@
+{% extends "microbase.html" %}
+{% block titlebar %}已申请的活动{% endblock %}
+{% block import %}
+<link rel="stylesheet" type="text/css" href="/static/css/microApplyedActivity.css">
+{% endblock %}
+{% block content %}
+<div data-role="header" id="latestHeader">
+    <h1>已申请的活动</h1>
+</div>
+<div data-role="content" id="attendedActivity">
+    {% for item in activities %}
+    <div class="activityItem" id="activity{{item.id}}">
+        <dt>{{item.title}}</dt>
+        <dd>{{item.startDateTime|date:"Y-m-d"}} {{item.endDateTime|time:"H:i"}} 到 {{item.startDateTime|date:"Y-m-d"}} {{item.endDateTime|time:"H:i"}}</dd>
+        <a href="/activity/registrants/{{item.id}}/"><button class="attendedPeople">活动参与者</button></a>
+    </div>
+    {% empty %}
+        <p class="alert">当前没有申请成功的活动</p>
+    {% endfor %}
+</div>
+{% endblock %}
+{% block importjs %}
+<script src="/static/js/microApplyedActivity.js"></script>
+{% endblock %}
